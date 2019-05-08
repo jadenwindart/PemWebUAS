@@ -9,7 +9,7 @@
 		<a href="product_summary.html"><span>&pound;</span></a>
 		<span class="btn btn-mini">$155.00</span>
 		<a href="product_summary.html"><span class="">$</span></a> -->
-		<a href="<?php echo base_url('product_summary')?>"><span class="btn btn-mini btn-primary"><i class="icon-shopping-cart icon-white"></i> [ 3 ] Itemes in your cart </span> </a> 
+		<a href="<?php echo base_url('index.php/Product_Summary')?>"><span class="btn btn-mini btn-primary"><i class="icon-shopping-cart icon-white"></i> [ 3 ] Itemes in your cart </span> </a> 
 	</div>
 	</div>
 </div>
@@ -36,7 +36,7 @@
         <?php echo form_close()?>
     <ul id="topMenu" class="nav pull-right">
 	 <!-- <li class=""><a href="special_offer.html">Specials Offer</a></li> -->
-	 <li class=""><a href="<?php echo base_url('index.php/delivery')?>">Delivery</a></li>
+	 <li class=""><a href="<?php echo base_url('index.php/Delivery')?>">Delivery</a></li>
 	 <li class=""><a href="<?php echo base_url('index.php/Contact')?>">Contact</a></li>
 	 <li class="">
 	 <a href="#login" role="button" data-toggle="modal" style="padding-right:0"><span class="btn btn-large btn-success">Login</span></a>
@@ -54,17 +54,13 @@
 			  <div class="control-group">
 				<input type="password" id="inputPassword" placeholder="Password">
 			  </div>
-			  <div class="control-group">
-				<label class="checkbox">
-				<input type="checkbox"> Remember me
-				</label>
-			  </div>
 			<?php echo form_close()?>		
 			<button type="submit" class="btn btn-success">Sign in</button>
 			<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
 		  </div>
 	</div>
 	</li>
+	<li class=""><a href="<?php echo base_url('index.php/Home/Register')?>">Register</a></li>
     </ul>
   </div>
 </div>
