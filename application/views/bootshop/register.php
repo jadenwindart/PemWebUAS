@@ -44,7 +44,7 @@
 		<button type="button" class="close" data-dismiss="alert">×</button>
 		<strong>Lorem Ipsum is simply</strong> dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
 	 </div> -->
-	<form class="form-horizontal" >
+	<?php echo form_open('Register',array('class'=>'form-horizontal'));?>
 		<h4>Your personal information</h4>
 		<div class="control-group">
 			<label class="control-label" for="inputFname1">First name <sup>*</sup></label>
@@ -155,7 +155,7 @@
 				<input class="btn btn-large btn-success" type="submit" value="Register" />
 			</div>
 		</div>		
-	</form>
+	<?php echo form_close()?>
 </div>
 
 </div>
