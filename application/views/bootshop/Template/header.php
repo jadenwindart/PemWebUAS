@@ -24,9 +24,9 @@
 	</a>
   <div class="navbar-inner">
     <a class="brand" href="<?php echo base_url('/')?>"><img src="<?php echo base_url('assets/themes/images/logo.png')?>" alt="Bootsshop"/></a>
-        <?php echo form_open('product/search',array('class'=>'form-inline navbar-search'))?>
+        <?php echo form_open('Home',array('class'=>'form-inline navbar-search'))?>
 
-		<input id="srchFld" class="srchTxt" type="text" />
+		<input id="srchFld" name="searchProduct" class="srchTxt" type="text" />
 		  <!-- <select class="srchTxt">
 			<option>All</option>
 			<option>LAPTOP </option>
