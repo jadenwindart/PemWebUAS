@@ -108,7 +108,8 @@
 
 	<div class="alert alert-block alert-error fade in">
 		<button type="button" class="close" data-dismiss="alert">×</button>
-		<strong>Please Fill The Required Field!</strong> Fill in your information completely for your convenience and security.
+		<strong>Please Fill The Required Field!</strong> 
+		<p>Fill in your information completely for your convenience and security.</p>
 	 </div>	
 
 		<h4>Your address</h4>
@@ -116,13 +117,13 @@
 		<div class="control-group">
 			<label class="control-label" for="address">Address<sup>*</sup></label>
 			<div class="controls">
-			  <input type="text" id="address" name="address" placeholder="Adress"/>
+			  <input type="text" id="address" name="address" placeholder="Address"/>
 			</div>
 		</div>
 		<div class="control-group">
 			<label class="control-label" for="city">City<sup>*</sup></label>
 			<div class="controls">
-			  <input type="text" id="city" name="city" placeholder="city"/> 
+			  <input type="text" id="city" name="city" placeholder="City"/> 
 			</div>
 		</div>	
 		<div class="control-group">
