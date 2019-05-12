@@ -14,7 +14,7 @@
             $productParam = array('products' => $this->product->GetAllProduct($this->input->post('searchProduct')));
             $data = array(
                 'style' => $this->load->view('bootshop/Template/style',NULL,TRUE),
-                'header' => $this->load->view('bootshop/Template/header',NULL,TRUE),
+                'header' => $this->load->view('bootshop/Template/header',array('CountOrder' => $this->user->CountOrder()),TRUE),
                 'carousel' => $this->load->view('bootshop/HomePage/carousel',NULL,TRUE),
                 'products' => $this->load->view('bootshop/HomePage/product',$productParam,TRUE),
                 'script' => $this->load->view('bootshop/Template/script',NULL,TRUE),
@@ -33,11 +33,21 @@
             $this->load->view('bootshop/register.php',$data);
         }
 
-        public function Login(){
+        public function LoginCheck(){
             if($this->user->CheckLogin($this->input->post('username'),$this->input->post('password'))){
                 $this->session->set_userdata('user',$this->user->SerializeData());
             }
             redirect('/Home');
+        }
+
+        public function Login(){
+            $data = array(
+                'style' => $this->load->view('bootshop/Template/style',NULL,TRUE),
+                'header' => $this->load->view('bootshop/Template/header',NULL,TRUE),
+                'script' => $this->load->view('bootshop/Template/script',NULL,TRUE),
+                'footer' => $this->load->view('bootshop/Template/footer',NULL,TRUE)
+            );
+            $this->load->view('bootshop/login.php',$data);
         }
 
         public function SignOut(){

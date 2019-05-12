@@ -49,11 +49,16 @@
         }
 
         public function GetOrder(){
-            $this->db->join('product','product.product_id = order.product_id');
+            $this->db->join('product','product.product_id = orders.product_id');
             $this->db->where('user_id',$this->ID);
-            $query = $this->db->get('order');
+            $query = $this->db->get('orders');
             $this->cart = $query->result_array();
             return $this->cart;
+        }
+
+        public function CountOrder(){
+            if(!isset($this->cart)) $this->GetOrder();
+            return count($this->cart);
         }
 
         public function SerializeData(){
