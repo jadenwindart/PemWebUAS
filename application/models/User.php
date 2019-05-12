@@ -93,12 +93,16 @@
             $this->db->trans_start();
             $this->db->insert('orders',$data);
             $this->db->trans_complete();
-            if($this->db->status() === FALSE){
+            if($this->db->trans_status() === FALSE){
                 $this->db->trans_rollback();
                 return FALSE;
             }
             $this->db->trans_commit();
             return TRUE;
+        }
+
+        public function GetAddress(){
+            return $this->address;
         }
     }
 ?>

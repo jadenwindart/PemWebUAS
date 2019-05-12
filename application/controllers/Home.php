@@ -78,8 +78,8 @@
                 'header' => $this->load->view('bootshop/Template/header',array('CountOrder' => $this->user->CountOrder()),TRUE),
                 'script' => $this->load->view('bootshop/Template/script',NULL,TRUE),
                 'ProductOrder' => $this->user->GetOrder(),
-                'footer' => $this->load->view('bootshop/Template/footer',NULL,TRUE)
-                
+                'footer' => $this->load->view('bootshop/Template/footer',NULL,TRUE),
+                'Address' => $this->user->GetAddress()
             );
             $this->load->view('bootshop/CartView',$data);
         }

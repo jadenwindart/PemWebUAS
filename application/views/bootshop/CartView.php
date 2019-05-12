@@ -50,7 +50,7 @@
 									?>
 
 								<tr>
-									<td> <img width="60" src="<?php echo base_url('assets/images/'.$Order['product_id'])?>" alt=""/></td>
+									<td> <img width="60" src="<?php echo base_url('assets/Prod_Img/'.$Order['product_id'].'.jpg')?>" alt=""/></td>
 									<td><?php echo $Order['name']?></td>
 									<td>
 										<div class="input-append"><input class="span1" style="max-width:34px" placeholder="1" id="appendedInputButtons" size="16" type="text"><button class="btn" type="button"><i class="icon-minus"></i></button><button class="btn" type="button"><i class="icon-plus"></i></button><button class="btn btn-danger" type="button"><i class="icon-remove icon-white"></i></button>				</div>
@@ -59,21 +59,9 @@
 									<td><?php echo $Order['price']?></td>
 								</tr>
 								<?php }?>
-								
+
 								<tr>
-									<td colspan="6" style="text-align:right">Total Price:	</td>
-									<td> $228.00</td>
-								</tr>
-								<tr>
-									<td colspan="6" style="text-align:right">Total Discount:	</td>
-									<td> $50.00</td>
-								</tr>
-								<tr>
-									<td colspan="6" style="text-align:right">Total Tax:	</td>
-									<td> $31.00</td>
-								</tr>
-								<tr>
-									<td colspan="6" style="text-align:right"><strong>TOTAL ($228 - $50 + $31) =</strong></td>
+									<td colspan="6" style="text-align:right"><strong>TOTAL=</strong></td>
 									<td class="label label-important" style="display:block"> <strong> $155.00 </strong></td>
 								</tr>
 									<?php }?>
@@ -84,25 +72,12 @@
 							<tr><th>ESTIMATE YOUR SHIPPING </th></tr>
 							<tr> 
 								<td>
-									<form class="form-horizontal">
 										<div class="control-group">
-											<label class="control-label" for="inputCountry">Country </label>
+											<label class="control-label" for="inputCountry">Address Shipping </label>
 											<div class="controls">
-												<input type="text" id="inputCountry" placeholder="Country">
+												<p><?php echo $Address?></p>
 											</div>
-										</div>
-										<div class="control-group">
-											<label class="control-label" for="inputPost">Post Code/ Zipcode </label>
-											<div class="controls">
-												<input type="text" id="inputPost" placeholder="Postcode">
-											</div>
-										</div>
-										<div class="control-group">
-											<div class="controls">
-												<button type="submit" class="btn">ESTIMATE </button>
-											</div>
-										</div>
-									</form>				  
+										</div>		  
 								</td>
 							</tr>
 						</table>
