@@ -84,5 +84,21 @@
             $this->phone = $data['phone'];
             $this->cart = $data['cart'];
         }
+
+        public function AddOrder($idProduct){
+            $data = array(
+                'user_id' => $this->ID,
+                'product_id' => $idProduct
+            );
+            $this->db->trans_start();
+            $this->db->insert('orders',$data);
+            $this->db->trans_complete();
+            if($this->db->status() === FALSE){
+                $this->db->trans_rollback();
+                return FALSE;
+            }
+            $this->db->trans_commit();
+            return TRUE;
+        }
     }
 ?>

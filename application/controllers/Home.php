@@ -7,6 +7,9 @@
         {
             parent::__construct();
             $this->load->model('user');
+            if(isset($this->session->user)){
+                $this->user->unSerializeData($this->session->user);
+            }
         }
 
         public function index(){
@@ -26,7 +29,7 @@
         public function Register(){
             $data = array(
                 'style' => $this->load->view('bootshop/Template/style',NULL,TRUE),
-                'header' => $this->load->view('bootshop/Template/header',NULL,TRUE),
+                'header' => $this->load->view('bootshop/Template/header',array('CountOrder' => $this->user->CountOrder()),TRUE),
                 'script' => $this->load->view('bootshop/Template/script',NULL,TRUE),
                 'footer' => $this->load->view('bootshop/Template/footer',NULL,TRUE)
             );
@@ -43,7 +46,7 @@
         public function Login(){
             $data = array(
                 'style' => $this->load->view('bootshop/Template/style',NULL,TRUE),
-                'header' => $this->load->view('bootshop/Template/header',NULL,TRUE),
+                'header' => $this->load->view('bootshop/Template/header',array('CountOrder' => $this->user->CountOrder()),TRUE),
                 'script' => $this->load->view('bootshop/Template/script',NULL,TRUE),
                 'footer' => $this->load->view('bootshop/Template/footer',NULL,TRUE)
             );
@@ -59,7 +62,7 @@
             $this->load->model('product');
             $data = array(
                 'style' => $this->load->view('bootshop/Template/style',NULL,TRUE),
-                'header' => $this->load->view('bootshop/Template/header',NULL,TRUE),
+                'header' => $this->load->view('bootshop/Template/header',array('CountOrder' => $this->user->CountOrder()),TRUE),
                 'carousel' => $this->load->view('bootshop/HomePage/carousel',NULL,TRUE),
                 'products' => $this->load->view('bootshop/HomePage/product',array('products' => $this->product->SearchProduct()),TRUE),
                 'script' => $this->load->view('bootshop/Template/script',NULL,TRUE),
@@ -67,6 +70,18 @@
                 
             );
             $this->load->view('bootshop/index.php',$data);
+        }
+
+        public function Cart(){
+            $data = array(
+                'style' => $this->load->view('bootshop/Template/style',NULL,TRUE),
+                'header' => $this->load->view('bootshop/Template/header',array('CountOrder' => $this->user->CountOrder()),TRUE),
+                'script' => $this->load->view('bootshop/Template/script',NULL,TRUE),
+                'ProductOrder' => $this->user->GetOrder(),
+                'footer' => $this->load->view('bootshop/Template/footer',NULL,TRUE)
+                
+            );
+            $this->load->view('bootshop/CartView',$data);
         }
     }
 ?>

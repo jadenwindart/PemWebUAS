@@ -7,7 +7,7 @@
 					<div class="caption">
 					  <h5><?php echo $product['name']?></h5>
 					 
-					  <h4 style="text-align:center"><a class="btn" href="product_details.html"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Add to <i class="icon-shopping-cart"></i></a> <p style="color:orangered;">Rp.<?php echo $product['price']?></p></h4>
+					  <h4 style="text-align:center"><a class="btn" href="product_details.html"> <i class="icon-zoom-in"></i></a> <a class="btn" href="<?php echo base_url('index.php/Cart/Add/'.$product['product_id'])?>">Add to <i class="icon-shopping-cart"></i></a> <p style="color:orangered;">Rp.<?php echo $product['price']?></p></h4>
 					</div>
 				  </div>
 				</li>
