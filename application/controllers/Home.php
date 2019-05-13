@@ -93,7 +93,6 @@
                 'footer' => $this->load->view('bootshop/Template/footer',NULL,TRUE),
                 'product' => $this->product->getProduct($id)
             );
-            //print_r($data['product']);
             $this->load->view('bootshop/product_details.php',$data);
         }
     }
