@@ -104,5 +104,17 @@
         public function GetAddress(){
             return $this->address;
         }
+
+        public function GetUsername(){
+            return $this->username;
+        }
+
+        public function GetName(){
+            return $this->FirstName . " " . $this->LastName;
+        }
+
+        public function GetMobilePhone(){
+            return $this->phone;
+        }
     }
 ?>

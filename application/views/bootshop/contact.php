@@ -43,7 +43,7 @@
 						<h5>Saturday - Sunday</h5>
 						<p>9am - 5pm<br/><br/></p>
 					</div>
-					<div class="span4">
+					<!-- <div class="span4">
 						<h4>Email Us</h4>
 						<form class="form-horizontal">
 							<fieldset>
@@ -71,7 +71,7 @@
 								
 							</fieldset>
 						</form>
-					</div>
+					</div> -->
 				</div>
 				<div class="row">
 					<div class="span12">

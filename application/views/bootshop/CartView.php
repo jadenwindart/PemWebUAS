@@ -26,10 +26,6 @@
 					<!-- Sidebar ================================================== -->
 					<!-- Sidebar end=============================================== -->
 					<div class="span9">
-						<ul class="breadcrumb">
-							<li><a href="index.html">Home</a> <span class="divider">/</span></li>
-							<li class="active"> SHOPPING CART</li>
-						</ul>
 						<h3>  SHOPPING CART [ <small><?php echo $this->user->CountOrder();?> Item(s) </small>]<a href="<?php echo base_url('index.php/Home')?>" class="btn btn-large pull-right"><i class="icon-arrow-left"></i> Continue Shopping </a></h3>	
 						<hr class="soft"/>		
 						

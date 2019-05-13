@@ -20,6 +20,15 @@
             redirect('Home');
         }
 
+        public function IncrementQty($idProduct){
+            $this->user->IncreaseQty($idProduct,1);
+            redirect('Home/Cart');
+        }
+
+        public function DecremenetQty($idProduct){
+            $this->user->DecreaseQty($idProduct,1);
+            redirect('Home/Cart');
+        }
         
     }
 ?>

@@ -83,5 +83,28 @@
             );
             $this->load->view('bootshop/CartView',$data);
         }
+
+        public function Account(){
+            $data = array(
+                'style' => $this->load->view('bootshop/Template/style',NULL,TRUE),
+                'header' => $this->load->view('bootshop/Template/header',array('CountOrder' => $this->user->CountOrder()),TRUE),
+                'script' => $this->load->view('bootshop/Template/script',NULL,TRUE),
+                'ProductOrder' => $this->user->GetOrder(),
+                'footer' => $this->load->view('bootshop/Template/footer',NULL,TRUE),
+                'Address' => $this->user->GetAddress()
+            );
+            $this->load->view('bootshop/AccountDetail',$data);
+        }
+
+        public function Contact(){
+            $data = array(
+                'style' => $this->load->view('bootshop/Template/style',NULL,TRUE),
+                'header' => $this->load->view('bootshop/Template/header',array('CountOrder' => $this->user->CountOrder()),TRUE),
+                'script' => $this->load->view('bootshop/Template/script',NULL,TRUE),
+                'footer' => $this->load->view('bootshop/Template/footer',NULL,TRUE)
+                
+            );
+            $this->load->view('bootshop/contact',$data);
+        }
     }
 ?>
