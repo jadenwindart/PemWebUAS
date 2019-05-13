@@ -44,7 +44,7 @@
 		<button type="button" class="close" data-dismiss="alert">×</button>
 		<strong>Lorem Ipsum is simply</strong> dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
 	 </div> -->
-	<form class="form-horizontal" >
+	<?php echo form_open('Register',array('class'=>'form-horizontal'));?>
 		<h4>Your personal information</h4>
 		<div class="control-group">
 			<label class="control-label" for="inputFname1">First name <sup>*</sup></label>
@@ -108,7 +108,8 @@
 
 	<div class="alert alert-block alert-error fade in">
 		<button type="button" class="close" data-dismiss="alert">×</button>
-		<strong>Please Fill The Required Field!</strong> Fill in your information completely for your convenience and security.
+		<strong>Please Fill The Required Field!</strong> 
+		<p>Fill in your information completely for your convenience and security.</p>
 	 </div>	
 
 		<h4>Your address</h4>
@@ -116,13 +117,13 @@
 		<div class="control-group">
 			<label class="control-label" for="address">Address<sup>*</sup></label>
 			<div class="controls">
-			  <input type="text" id="address" name="address" placeholder="Adress"/>
+			  <input type="text" id="address" name="address" placeholder="Address"/>
 			</div>
 		</div>
 		<div class="control-group">
 			<label class="control-label" for="city">City<sup>*</sup></label>
 			<div class="controls">
-			  <input type="text" id="city" name="city" placeholder="city"/> 
+			  <input type="text" id="city" name="city" placeholder="City"/> 
 			</div>
 		</div>	
 		<div class="control-group">
@@ -155,7 +156,7 @@
 				<input class="btn btn-large btn-success" type="submit" value="Register" />
 			</div>
 		</div>		
-	</form>
+	<?php echo form_close()?>
 </div>
 
 </div>

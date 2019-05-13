@@ -15,18 +15,15 @@
 	<!--<link rel="stylesheet/less" type="text/css" href="themes/less/bootshop.less">
 	<script src="themes/js/less.js" type="text/javascript"></script> -->
 	
-	<?php echo $style ?>
+<?php echo $style?>
 	<style type="text/css" id="enject"></style>
   </head>
 <body>
-<?php echo $header ?>
+<?php echo $header?>
 <!-- Header End====================================================================== -->
 <div id="mainBody">
 	<div class="container">
 	<div class="row">
-<!-- Sidebar ================================================== -->
-	<?php echo $sidebar ?>
-<!-- Sidebar end=============================================== -->
 	<div class="span9">
     <ul class="breadcrumb">
 		<li><a href="index.html">Home</a> <span class="divider">/</span></li>
@@ -36,47 +33,34 @@
 	<hr class="soft"/>
 	
 	<div class="row">
-		<div class="span4">
-			<div class="well">
-			<h5>CREATE YOUR ACCOUNT</h5><br/>
-			Enter your e-mail address to create an account.<br/><br/><br/>
-			<form action="register.html">
-			  <div class="control-group">
-				<label class="control-label" for="inputEmail0">E-mail address</label>
-				<div class="controls">
-				  <input class="span3"  type="text" id="inputEmail0" placeholder="Email">
-				</div>
-			  </div>
-			  <div class="controls">
-			  <button type="submit" class="btn block">Create Your Account</button>
-			  </div>
-			</form>
-		</div>
-		</div>
 		<div class="span1"> &nbsp;</div>
 		<div class="span4">
-			<div class="well">
-			<h5>ALREADY REGISTERED ?</h5>
-			<form>
-			  <div class="control-group">
-				<label class="control-label" for="inputEmail1">Email</label>
-				<div class="controls">
-				  <input class="span3"  type="text" id="inputEmail1" placeholder="Email">
-				</div>
-			  </div>
-			  <div class="control-group">
-				<label class="control-label" for="inputPassword1">Password</label>
-				<div class="controls">
-				  <input type="password" class="span3"  id="inputPassword1" placeholder="Password">
-				</div>
-			  </div>
-			  <div class="control-group">
-				<div class="controls">
-				  <button type="submit" class="btn">Sign in</button> <a href="forgetpass.html">Forget password?</a>
-				</div>
-			  </div>
-			</form>
-		</div>
+		<table class="table table-bordered">
+			<tr><th> I AM ALREADY REGISTERED  </th></tr>
+			<tr> 
+				<td>
+				<?php echo form_open('Home/LoginCheck',array('class'=>'form-horizontal loginFrm'))?>
+						<div class="control-group">
+							<label class="control-label" for="inputUsername">Username</label>
+							<div class="controls">
+								<input type="text" id="username" name="username" placeholder="Username">
+							</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label" for="inputPassword1">Password</label>
+							<div class="controls">
+								<input type="password" id="inputPassword1" name="password" placeholder="Password">
+							</div>
+						</div>
+						<div class="control-group">
+							<div class="controls">
+								<button type="submit" class="btn">Sign in</button> OR <a href="<?php echo base_url('index.php/Home/Register')?>" class="btn">Register Now!</a>
+							</div>
+						</div>
+						<?php echo form_close()?>
+				</td>
+			</tr>
+		</table>		
 		</div>
 	</div>	
 	
@@ -85,14 +69,9 @@
 </div>
 <!-- MainBody End ============================= -->
 <!-- Footer ================================================================== -->
-<?php echo $footer ?>
+<?php echo $footer?>
 <!-- Placed at the end of the document so the pages load faster ============================================= -->
-	<script src="themes/js/jquery.js" type="text/javascript"></script>
-	<script src="themes/js/bootstrap.min.js" type="text/javascript"></script>
-	<script src="themes/js/google-code-prettify/prettify.js"></script>
-	
-	<script src="themes/js/bootshop.js"></script>
-    <script src="themes/js/jquery.lightbox-0.5.js"></script>
+	<?php echo $script?>
 <span id="themesBtn"></span>
 </body>
 </html>

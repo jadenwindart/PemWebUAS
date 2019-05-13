@@ -20,7 +20,6 @@
   </head>
 <body>
 	<?php echo $header;
-	echo $carousel;
 	?>
 
 
@@ -29,7 +28,7 @@
 	<div class="row">
 		<div class="span9">	
 		<h4>List Products </h4>
-			  <?php echo $products?>
+			  <?php echo $products?>	
 		</div>
 		</div>
 	</div>
