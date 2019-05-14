@@ -80,7 +80,7 @@
 							</tr>
 						</table>
 						<?php if($ProductOrder !== NULL && count($ProductOrder) != 0){?>
-						<a href="login.html" class="btn btn-large pull-right">Next <i class="icon-arrow-right"></i></a>
+						<a href="<?php echo base_url('index.php/Home/CheckOut')?>" class="btn btn-large pull-right">Next <i class="icon-arrow-right"></i></a>
 						<?php }?>
 					</div>
 				</div></div>

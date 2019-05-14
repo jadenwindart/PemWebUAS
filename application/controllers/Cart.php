@@ -34,5 +34,12 @@
             $this->user->DeleteOrder($idProduct);
             redirect('Home/Cart');
         }
+
+        public function CheckOut(){
+            if($this->user->CheckOut($this->input->post('password'))){
+                redirect('/');
+            }
+            redirect('Home/CheckOut');
+        }
     }
 ?>

@@ -10,6 +10,7 @@
             if(isset($this->session->user)){
                 $this->user->unSerializeData($this->session->user);
             }
+            $this->load->library('form_validation');
         }
 
         public function index(){
@@ -25,15 +26,6 @@
                 
             );
             $this->load->view('bootshop/index.php',$data);
-        }
-        public function Register(){
-            $data = array(
-                'style' => $this->load->view('bootshop/Template/style',NULL,TRUE),
-                'header' => $this->load->view('bootshop/Template/header',array('CountOrder' => $this->user->CountOrder()),TRUE),
-                'script' => $this->load->view('bootshop/Template/script',NULL,TRUE),
-                'footer' => $this->load->view('bootshop/Template/footer',NULL,TRUE)
-            );
-            $this->load->view('bootshop/register.php',$data);
         }
 
         public function LoginCheck(){
@@ -105,6 +97,18 @@
                 
             );
             $this->load->view('bootshop/contact',$data);
+        }
+
+        public function CheckOut(){
+            $data = array(
+                'style' => $this->load->view('bootshop/Template/style',NULL,TRUE),
+                'header' => $this->load->view('bootshop/Template/header',array('CountOrder' => $this->user->CountOrder()),TRUE),
+                'script' => $this->load->view('bootshop/Template/script',NULL,TRUE),
+                'ProductOrder' => $this->user->GetOrder(),
+                'footer' => $this->load->view('bootshop/Template/footer',NULL,TRUE),
+                'Address' => $this->user->GetAddress()
+            );
+            $this->load->view('bootshop/CheckOutView',$data);
         }
     }
 ?>

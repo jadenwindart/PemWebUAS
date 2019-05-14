@@ -37,7 +37,6 @@
             $this->db->where('username',$username);
             $query = $this->db->get('user');
             $userData = $query->result_array();
-            var_dump($userData);
             if(password_verify($password,$userData[0]['password'])){
                 $this->ID = $userData[0]['user_id'];
                 $this->FirstName = $userData[0]['first_name'];
@@ -105,12 +104,14 @@
             );
             $this->db->trans_start();
             $this->db->insert('orders',$data);
+            $this->FetchOrder();
             $this->db->trans_complete();
             if($this->db->trans_status() === FALSE){
                 $this->db->trans_rollback();
                 return FALSE;
             }
             $this->db->trans_commit();
+            
             return TRUE;
         }
 
@@ -121,12 +122,14 @@
             $this->db->where('product_id',$idProduct);
             $this->db->set('qty','qty+'.$value,FALSE);
             $this->db->update('orders');
+            $this->FetchOrder();
             $this->db->trans_complete();
             if($this->db->trans_status() === FALSE){
                 $this->db->trans_rollback();
                 return FALSE;
             }
             $this->db->trans_commit();
+            
             return TRUE;
         }
 
@@ -136,14 +139,27 @@
                 $this->db->where('user_id',$this->ID);
                 $this->db->where('product_id',$idProduct);
                 $this->db->delete('orders');
+                $this->FetchOrder();
                 $this->db->trans_complete();
                 if($this->db->trans_status() === FALSE){
                     $this->db->trans_rollback();
                     return FALSE;
                 }
                 $this->db->trans_commit();
+                
                 return TRUE;
             }
+        }
+
+        public function CheckOut($password){
+            $this->db->where('user_id',$this->ID);
+            $this->db->select('password');
+            $query = $this->db->get('user');
+            $userData = $query->result_array();
+            if(password_verify($password,$userData[0]['password'])){
+                return TRUE;
+            }
+            return FALSE;
         }
 
         public function GetAddress(){

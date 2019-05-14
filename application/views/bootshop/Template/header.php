@@ -49,7 +49,7 @@
 	 <li class="">
 	 <a href="<?php echo base_url('index.php/Home/Login');?>" role="button" style="padding-right:0"><span class="btn btn-large btn-success">Login</span></a>
 	</li>
-	<li class=""><a href="<?php echo base_url('index.php/Home/Register')?>">Register</a></li>
+	<li class=""><a href="<?php echo base_url('index.php/Register')?>">Register</a></li>
 	 <?php }
 	 else{?>
 		<li class=""><a href="<?php echo base_url('index.php/Home/SignOut')?>">SignOut</a></li>
