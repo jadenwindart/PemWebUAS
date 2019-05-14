@@ -1,9 +1,28 @@
 <ul class="thumbnails">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+.zoom {
+  padding: 50px;
+  transition: transform .2s;
+  width: 200px;
+  height: 200px;
+  margin: 0 auto;
+}
+
+.zoom:hover {
+  -ms-transform: scale(1.5); /* IE 9 */
+  -webkit-transform: scale(1.5); /* Safari 3-8 */
+  transform: scale(1.5); 
+}
+</style>
 		
 			<?php foreach($products as $product){?>
 				<li class="span3">
 				  <div class="thumbnail">
-					<a  href="product_details.html"><img src="<?php echo base_url('assets/Prod_Img/'.$product['product_id'].".jpg")?>" alt="No Image Found" width="70px" height="70px"/></a>
+					<a  href="product_details.html"><img class="zoom" src="<?php echo base_url('assets/Prod_Img/'.$product['product_id'].".jpg")?>" alt="No Image Found" width="70px" height="70px"/></a>
 					<div class="caption">
 					  <h5><?php echo $product['name']?></h5>
 					 

@@ -10,7 +10,7 @@
 				<a href="product_summary.html"><span>&pound;</span></a>
 				<span class="btn btn-mini">$155.00</span>
 				<a href="product_summary.html"><span class="">$</span></a> -->
-				<a href="<?php echo base_url('index.php/Home/Cart')?>"><span class="btn btn-mini btn-primary"><i class="icon-shopping-cart icon-white"></i> [ <?php echo $CountOrder ?> ] Itemes in your cart </span> </a> 
+				<a href="<?php echo base_url('index.php/Home/Cart')?>"><span class="btn btn-mini btn-primary"><i class="icon-shopping-cart icon-white"></i> [ <?php echo $CountOrder ?> ] Items in your cart </span> </a> 
 			</div>
 		</div>
 	</div>
@@ -47,7 +47,7 @@
 	 <?php 
 	 if(!isset($this->session->user) || $this->session->user === NULL){?>
 	 <li class="">
-	 <a href="<?php echo base_url('index.php/Home/Login');?>" role="button" style="padding-right:0"><span class="btn btn-large btn-success">Login</span></a>
+	 <a href="<?php echo base_url('index.php/Home/Login');?>" role="button" style="padding-right:10"><span class="btn btn-large btn-success">Login</span></a>
 	</li>
 	<li class=""><a href="<?php echo base_url('index.php/Home/Register')?>">Register</a></li>
 	 <?php }
