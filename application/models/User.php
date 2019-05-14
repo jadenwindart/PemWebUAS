@@ -50,18 +50,12 @@
             return FALSE;
         }
 
-        public function FetchOrder(){
+        public function GetOrder(){
+            $this->db->cache_on();
             $this->db->join('product','product.product_id = orders.product_id');
             $this->db->where('user_id',$this->ID);
             $query = $this->db->get('orders');
             $this->cart = $query->result_array();
-            return $this->cart;
-        }
-
-        public function GetOrder(){
-            if($this->cart === NULL){
-                return $this->FetchOrder();
-            }
             return $this->cart;
         }
 
@@ -104,14 +98,13 @@
             );
             $this->db->trans_start();
             $this->db->insert('orders',$data);
-            $this->FetchOrder();
             $this->db->trans_complete();
             if($this->db->trans_status() === FALSE){
                 $this->db->trans_rollback();
                 return FALSE;
             }
             $this->db->trans_commit();
-            
+            $this->db->cache_off();
             return TRUE;
         }
 
@@ -122,14 +115,13 @@
             $this->db->where('product_id',$idProduct);
             $this->db->set('qty','qty+'.$value,FALSE);
             $this->db->update('orders');
-            $this->FetchOrder();
             $this->db->trans_complete();
             if($this->db->trans_status() === FALSE){
                 $this->db->trans_rollback();
                 return FALSE;
             }
             $this->db->trans_commit();
-            
+            $this->db->cache_off();
             return TRUE;
         }
 
@@ -139,14 +131,13 @@
                 $this->db->where('user_id',$this->ID);
                 $this->db->where('product_id',$idProduct);
                 $this->db->delete('orders');
-                $this->FetchOrder();
                 $this->db->trans_complete();
                 if($this->db->trans_status() === FALSE){
                     $this->db->trans_rollback();
                     return FALSE;
                 }
                 $this->db->trans_commit();
-                
+                $this->db->cache_off();
                 return TRUE;
             }
         }
