@@ -18,7 +18,7 @@
         }
 
         public function getTopProduct() {
-            $this->db->order_by('product_id');
+            $this->db->order_by('product_id', 'DESC');
             $this->db->limit(2);
             $query = $this->db->get('product');
 

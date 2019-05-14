@@ -30,7 +30,7 @@
 <!-- Sidebar ================================================== -->
 
 	<?php echo $sidebar ?>
-	
+
 <!-- Sidebar end=============================================== -->
 	<div class="span9">
     <ul class="breadcrumb">
@@ -46,21 +46,35 @@
 				<h3> <?php echo $row['name'] ?> </h3>
 				<!-- <small>Core i7, DDR4, 32GB, HDD, SSD</small> -->
 				<hr class="soft"/>
-				<form class="form-horizontal qtyFrm">
+				<div class="row">
+					<div class=span3>
+						<h4> <?php echo "Rp. ".$row['price'] ?> </h4>
+					</div>
+					<div class="span3">
+						<a class="btn btn-large btn-primary pull-right" href="<?php echo base_url('index.php/Cart/Add/'.$row['product_id'])?>">Add to cart <i class=" icon-shopping-cart"></i></a>
+					</div>
+					
+				</div>
+				
+				<!-- <form class="form-horizontal qtyFrm">
 				  <div class="control-group">
 					<label class="control-label"><span> <?php echo "Rp. ".$row['price'] ?> </span></label>
 					<div class="controls">
 					<input type="number" class="span1" placeholder="Qty."/>
+					<a class="btn btn-large btn-primary pull-right" href="<?php echo base_url('index.php/Cart/Add/'.$row['product_id'])?>">Add to cart <i class=" icon-shopping-cart"></i></a>
 					  <button type="submit" class="btn btn-large btn-primary pull-right"> Add to cart <i class=" icon-shopping-cart"></i></button>
 					</div>
 				  </div>
-				</form>
+				</form> -->
 				
 				<hr class="soft clr"/>
 				<p>
 					<!-- Laptop gaming dengan layar 15.6" yang memiliki prosesor Core i7, penyimpanan memori yang cepat, memori pendukung DDR4-2400 terbaru yang akan membuat performa game lebih cepat -->
 				
-					<?php	echo $row['description'] ?>
+					<?php
+						$desc = preg_replace('(\s-)', '<br>-',  $row['description']);
+						echo $desc;
+					?>
 
 				</p>
 		<?php } ?>
