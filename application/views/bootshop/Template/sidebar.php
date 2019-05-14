@@ -16,7 +16,7 @@
 
 	<?php foreach($topProduct as $row) {
 			echo "<div class='thumbnail'>";
-				echo "<img src='".base_url('assets/Prod_Img/'.$row['product_id'].".jpg")."' style='width:30%'>";
+				echo "<img src='".base_url('assets/Prod_Img/'.$row['product_id'].".jpg")."' style='width:100px; height:100px; object-fit:contain'>";
 				echo "<div class='caption'>";
 					if(strlen($row['name']) > 50) {
 						$name = substr($row['name'], 0, 50) . ". . .";
