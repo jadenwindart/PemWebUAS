@@ -21,14 +21,18 @@
         }
 
         public function IncrementQty($idProduct){
-            $this->user->IncreaseQty($idProduct,1);
+            $this->user->UpdateQty($idProduct,1);
             redirect('Home/Cart');
         }
 
-        public function DecremenetQty($idProduct){
-            $this->user->DecreaseQty($idProduct,1);
+        public function DecrementQty($idProduct){
+            $this->user->UpdateQty($idProduct,-1);
             redirect('Home/Cart');
         }
         
+        public function Delete($idProduct){
+            $this->user->DeleteOrder($idProduct);
+            redirect('Home/Cart');
+        }
     }
 ?>

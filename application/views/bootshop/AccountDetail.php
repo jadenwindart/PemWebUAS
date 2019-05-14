@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Register</title>
+    <title>LepiMania</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -25,7 +25,7 @@
 	<div class="container">
 	<div class="row">
 	<div class="span9">
-	<h3> Registration</h3>	
+	<h3> Your Account</h3>	
 	<div class="well">
 	<!--
 	<div class="alert alert-info fade in">
@@ -68,7 +68,12 @@
 			  <p><?php echo $this->user->GetMobilePhone()  ?></p>
 			</div>
 		</div>
-
+		<div class="control-group">
+			<label class="control-label" for="mobile">Account Balance </label>
+			<div class="controls">
+			  <p><?php echo $this->user->GetBalance()  ?></p>
+			</div>
+		</div>
 		
 	<?php echo form_close()?>
 </div>

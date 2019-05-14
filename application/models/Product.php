@@ -3,9 +3,12 @@
 
     class Product extends CI_Model{
 
+        //private $ListProduct;
+
         public function GetAllProduct($search){
             if(isset($search)) $this->db->like('name',$search);
             $query = $this->db->get('product');
-            return $query->result_array();
+            $this->ListProduct = $query->result_array();
+            return $this->ListProduct;
         }
     }
