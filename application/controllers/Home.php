@@ -86,14 +86,25 @@
 
         public function ProductDetail($id) {
             $this->load->model('product');
+            
+            $topProduct = $this->product->getTopProduct();
+            $category = $this->product->getCategory();
+
             $data = array(
                 'style' => $this->load->view('bootshop/Template/style',NULL,TRUE),
                 'header' => $this->load->view('bootshop/Template/header',array('CountOrder' => $this->user->CountOrder()),TRUE),
                 'script' => $this->load->view('bootshop/Template/script',NULL,TRUE),
                 'footer' => $this->load->view('bootshop/Template/footer',NULL,TRUE),
+                'sidebar' => $this->load->view('bootshop/Template/sidebar',array('topProduct' => $topProduct, 'category' => $category),TRUE),
                 'product' => $this->product->getProduct($id)
             );
             $this->load->view('bootshop/product_details.php',$data);
+        }
+
+        public function Category($id) {
+            $this->load->model('product');
+
+            
         }
     }
 ?>

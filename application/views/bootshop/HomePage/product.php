@@ -2,7 +2,7 @@
 	<?php foreach($products as $product) {?>
 		<li class="span3">
 			<div class="thumbnail">
-				<a  href="product_details.html"><img src="<?php echo base_url('assets/Prod_Img/'.$product['product_id'].".jpg")?>" alt="No Image Found" width="70px" height="70px"/></a>
+				<a  href="<?php echo base_url("index.php/Home/ProductDetail/".$product['product_id']) ?>"><img src="<?php echo base_url('assets/Prod_Img/'.$product['product_id'].".jpg")?>" alt="No Image Found" width="70px" height="70px"/></a>
 				<div class="caption">
 					<h5><?php echo $product['name']?></h5>
 				
