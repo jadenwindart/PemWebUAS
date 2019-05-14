@@ -52,7 +52,7 @@
 	<li class=""><a href="<?php echo base_url('index.php/Home/Register')?>">Register</a></li>
 	 <?php }
 	 else{?>
-		<li class=""><a href="<?php echo base_url('index.php/Home/SignOut')?>">SignOut</a></li>
+		<li class=""><a href="<?php echo base_url('index.php/Home/SignOut')?>">Sign Out</a></li>
 	 <?php }?>
     </ul>
   </div>
