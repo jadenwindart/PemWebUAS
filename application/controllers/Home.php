@@ -15,9 +15,12 @@
 
         public function index(){
             $this->load->model('product');
+            
             $productParam = array('products' => $this->product->GetAllProduct($this->input->post('searchProduct')));
+            
             $topProduct = $this->product->getTopProduct();
-            $category = $this->product->getCategory();
+            $allCategory = $this->product->getAllCategory();
+            
             $data = array(
                 'style' => $this->load->view('bootshop/Template/style',NULL,TRUE),
                 'header' => $this->load->view('bootshop/Template/header',array('CountOrder' => $this->user->CountOrder()),TRUE),
@@ -25,8 +28,7 @@
                 'products' => $this->load->view('bootshop/HomePage/product',$productParam,TRUE),
                 'script' => $this->load->view('bootshop/Template/script',NULL,TRUE),
                 'footer' => $this->load->view('bootshop/Template/footer',NULL,TRUE),
-                'sidebar' => $this->load->view('bootshop/Template/sidebar',array('topProduct' => $topProduct, 'category' => $category),TRUE)
-                
+                'sidebar' => $this->load->view('bootshop/Template/sidebar',array('topProduct' => $topProduct, 'allCategory' => $allCategory),TRUE)  
             );
             $this->load->view('bootshop/index.php',$data);
         }
@@ -118,17 +120,36 @@
             $this->load->model('product');
             
             $topProduct = $this->product->getTopProduct();
-            $category = $this->product->getCategory();
+            $allCategory = $this->product->getAllCategory();
 
             $data = array(
                 'style' => $this->load->view('bootshop/Template/style',NULL,TRUE),
                 'header' => $this->load->view('bootshop/Template/header',array('CountOrder' => $this->user->CountOrder()),TRUE),
                 'script' => $this->load->view('bootshop/Template/script',NULL,TRUE),
                 'footer' => $this->load->view('bootshop/Template/footer',NULL,TRUE),
-                'sidebar' => $this->load->view('bootshop/Template/sidebar',array('topProduct' => $topProduct, 'category' => $category),TRUE),
+                'sidebar' => $this->load->view('bootshop/Template/sidebar',array('topProduct' => $topProduct, 'allCategory' => $allCategory),TRUE),
                 'product' => $this->product->getProduct($id)
             );
             $this->load->view('bootshop/product_details.php',$data);
+        }
+
+        public function Category($cat_id) {
+            $this->load->model('product');
+
+            $topProduct = $this->product->getTopProduct();
+            $allCategory = $this->product->getAllCategory();
+
+            $data = array(
+                'style' => $this->load->view('bootshop/Template/style',NULL,TRUE),
+                'header' => $this->load->view('bootshop/Template/header',array('CountOrder' => $this->user->CountOrder()),TRUE),
+                'carousel' => $this->load->view('bootshop/HomePage/carousel',NULL,TRUE),
+                'products' => $this->load->view('bootshop/HomePage/product',array('products' => $this->product->getProductByCategory($cat_id)),TRUE),
+                'script' => $this->load->view('bootshop/Template/script',NULL,TRUE),
+                'footer' => $this->load->view('bootshop/Template/footer',NULL,TRUE),
+                'sidebar' => $this->load->view('bootshop/Template/sidebar',array('topProduct' => $topProduct, 'allCategory' => $allCategory),TRUE),
+                'cat_id' => $cat_id-1
+            );
+            $this->load->view('bootshop/index.php',$data);
         }
     }
 ?>

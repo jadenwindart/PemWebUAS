@@ -3,8 +3,8 @@
 	<!-- <div class="well well-small"><a id="myCart" href="<?php echo base_url('index.php/Home/Cart')?>"><img src="<?php echo base_url('/assets/themes/images/ico-cart.png')?>" alt="cart">3 Items in your cart  <span class="badge badge-warning pull-right">$155.00</span></a></div> -->
 	<ul id="sideManu" class="nav nav-tabs nav-stacked">
 		<?php
-			foreach($category as $row) {
-				echo "<li><a href='".base_url('index.php/Home')."'>".$row['category']."</a></li>";
+			foreach($allCategory as $row) {
+				echo "<li><a href='".base_url('index.php/Home/Category/'.$row['cat_id'])."'>".$row['category']."</a></li>";
 			}
 		?>
 			<!-- <li><a href="products.html"> LAPTOP</a></li>
