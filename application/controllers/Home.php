@@ -10,35 +10,22 @@
             if(isset($this->session->user)){
                 $this->user->unSerializeData($this->session->user);
             }
+            $this->load->library('form_validation');
         }
 
         public function index(){
             $this->load->model('product');
-            
             $productParam = array('products' => $this->product->GetAllProduct($this->input->post('searchProduct')));
-            
-            $topProduct = $this->product->getTopProduct();
-            $category = $this->product->getCategory();
-            
             $data = array(
                 'style' => $this->load->view('bootshop/Template/style',NULL,TRUE),
                 'header' => $this->load->view('bootshop/Template/header',array('CountOrder' => $this->user->CountOrder()),TRUE),
                 'carousel' => $this->load->view('bootshop/HomePage/carousel',NULL,TRUE),
                 'products' => $this->load->view('bootshop/HomePage/product',$productParam,TRUE),
                 'script' => $this->load->view('bootshop/Template/script',NULL,TRUE),
-                'footer' => $this->load->view('bootshop/Template/footer',NULL,TRUE),
-                'sidebar' => $this->load->view('bootshop/Template/sidebar',array('topProduct' => $topProduct, 'category' => $category),TRUE)
+                'footer' => $this->load->view('bootshop/Template/footer',NULL,TRUE)
+                
             );
             $this->load->view('bootshop/index.php',$data);
-        }
-        public function Register(){
-            $data = array(
-                'style' => $this->load->view('bootshop/Template/style',NULL,TRUE),
-                'header' => $this->load->view('bootshop/Template/header',array('CountOrder' => $this->user->CountOrder()),TRUE),
-                'script' => $this->load->view('bootshop/Template/script',NULL,TRUE),
-                'footer' => $this->load->view('bootshop/Template/footer',NULL,TRUE)
-            );
-            $this->load->view('bootshop/register.php',$data);
         }
 
         public function LoginCheck(){
@@ -89,21 +76,39 @@
             $this->load->view('bootshop/CartView',$data);
         }
 
-        public function ProductDetail($id) {
-            $this->load->model('product');
-            
-            $topProduct = $this->product->getTopProduct();
-            $category = $this->product->getCategory();
-
+        public function Account(){
             $data = array(
                 'style' => $this->load->view('bootshop/Template/style',NULL,TRUE),
                 'header' => $this->load->view('bootshop/Template/header',array('CountOrder' => $this->user->CountOrder()),TRUE),
                 'script' => $this->load->view('bootshop/Template/script',NULL,TRUE),
+                'ProductOrder' => $this->user->GetOrder(),
                 'footer' => $this->load->view('bootshop/Template/footer',NULL,TRUE),
-                'sidebar' => $this->load->view('bootshop/Template/sidebar',array('topProduct' => $topProduct, 'category' => $category),TRUE),
-                'product' => $this->product->getProduct($id)
+                'Address' => $this->user->GetAddress()
             );
-            $this->load->view('bootshop/product_details.php',$data);
+            $this->load->view('bootshop/AccountDetail',$data);
+        }
+
+        public function Contact(){
+            $data = array(
+                'style' => $this->load->view('bootshop/Template/style',NULL,TRUE),
+                'header' => $this->load->view('bootshop/Template/header',array('CountOrder' => $this->user->CountOrder()),TRUE),
+                'script' => $this->load->view('bootshop/Template/script',NULL,TRUE),
+                'footer' => $this->load->view('bootshop/Template/footer',NULL,TRUE)
+                
+            );
+            $this->load->view('bootshop/contact',$data);
+        }
+
+        public function CheckOut(){
+            $data = array(
+                'style' => $this->load->view('bootshop/Template/style',NULL,TRUE),
+                'header' => $this->load->view('bootshop/Template/header',array('CountOrder' => $this->user->CountOrder()),TRUE),
+                'script' => $this->load->view('bootshop/Template/script',NULL,TRUE),
+                'ProductOrder' => $this->user->GetOrder(),
+                'footer' => $this->load->view('bootshop/Template/footer',NULL,TRUE),
+                'Address' => $this->user->GetAddress()
+            );
+            $this->load->view('bootshop/CheckOutView',$data);
         }
     }
 ?>

@@ -3,31 +3,24 @@
 
     class Product extends CI_Model{
 
+        //private $ListProduct;
+
         public function GetAllProduct($search){
-            if(isset($search)) $this->db->like('name',$search);
-            $query = $this->db->get('product');
-            return $query->result_array();
-        }
-
-        public function getProduct($id) {
-            if(isset($id)) {
-                $this->db->where('product_id', $id);
+                $this->db->cache_on();
                 $query = $this->db->get('product');
-                return $query->result_array();
+                $data = $query->result_array();
+            if(isset($search) || $search !== NULL){
+                $filteredArray = array_filter($data,function($var) use ($search){
+                    if(strpos(strtolower($var['name']),strtolower($search)) !== FALSE) return TRUE;
+                    return FALSE;
+                });
             }
-        }
+            else{
+                $filteredArray = $data;
+            }
 
-        public function getTopProduct() {
-            $this->db->order_by('product_id', 'DESC');
-            $this->db->limit(2);
-            $query = $this->db->get('product');
+            return $filteredArray;
 
-            return $query->result_array();
-        }
-
-        public function getCategory() {
-            $query = $this->db->get('category');
-
-            return $query->result_array();
+            
         }
     }

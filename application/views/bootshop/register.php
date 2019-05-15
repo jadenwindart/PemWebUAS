@@ -25,10 +25,6 @@
 	<div class="container">
 	<div class="row">
 	<div class="span9">
-    <ul class="breadcrumb">
-		<li><a href="index.html">Home</a> <span class="divider">/</span></li>
-		<li class="active">Registration</li>
-    </ul>
 	<h3> Registration</h3>	
 	<div class="well">
 	<!--
@@ -51,24 +47,28 @@
 			<div class="controls">
 			  <input type="text" id="FirstName" name="FirstName" placeholder="First Name">
 			</div>
+			<?php echo form_error('FirstName')?>
 		 </div>
 		 <div class="control-group">
 			<label class="control-label" for="inputLnam">Last name <sup>*</sup></label>
 			<div class="controls">
 			  <input type="text" id="LastName" name="LastName" placeholder="Last Name">
 			</div>
+			<?php echo form_error('LastName')?>
 		 </div>
 		<div class="control-group">
 		<label class="control-label" for="username">Username <sup>*</sup></label>
 		<div class="controls">
 		  <input type="text" id="username" name="username" placeholder="Username">
 		</div>
+		<?php echo form_error('username')?>
 	  </div>	  
 	<div class="control-group">
 		<label class="control-label" for="password">Password <sup>*</sup></label>
 		<div class="controls">
 		  <input type="password" id="password"  name="password" placeholder="Password">
 		</div>
+		<?php echo form_error('password')?>
 	  </div>	  
 		<!-- <div class="control-group">
 		<label class="control-label">Date of Birth <sup>*</sup></label>
@@ -119,18 +119,21 @@
 			<div class="controls">
 			  <input type="text" id="address" name="address" placeholder="Address"/>
 			</div>
+			<?php echo form_error('address')?>
 		</div>
 		<div class="control-group">
 			<label class="control-label" for="city">City<sup>*</sup></label>
 			<div class="controls">
 			  <input type="text" id="city" name="city" placeholder="City"/> 
 			</div>
+			<?php echo form_error('city')?>
 		</div>	
 		<div class="control-group">
 			<label class="control-label" for="postcode">Zip / Postal Code<sup>*</sup></label>
 			<div class="controls">
 			  <input type="text" id="postcode" name="postcode" placeholder="Zip / Postal Code"/> 
 			</div>
+			<?php echo form_error('postcode')?>
 		</div>
 		
 		<div class="control-group">
@@ -138,6 +141,7 @@
 			<div class="controls">
 				<input type="text" name="country" id="country" placeholder="Country">
 			</div>
+			<?php echo form_error('country')?>
 		</div>
 		
 		<div class="control-group">
@@ -145,6 +149,7 @@
 			<div class="controls">
 			  <input type="text"  name="phone" id="mobile" placeholder="Mobile Phone"/> 
 			</div>
+			<?php echo form_error('phone')?>
 		</div>
 		
 	<p><sup>*</sup>Required field	</p>

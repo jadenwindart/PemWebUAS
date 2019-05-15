@@ -38,17 +38,21 @@
         <?php echo form_close()?>
     <ul id="topMenu" class="nav pull-right">
 	 <!-- <li class=""><a href="special_offer.html">Specials Offer</a></li> -->
-	 <li class=""><a href="<?php echo base_url('index.php/Delivery')?>">Delivery</a></li>
-	 <li class=""><a href="<?php echo base_url('index.php/Contact')?>">Contact</a></li>
+	 <li class=""><a href="<?php echo base_url('/')?>">Home</a></li>
+	 <?php 
+	 if(isset($this->session->user) || $this->session->user !== NULL){?>
+	 <li class=""><a href="<?php echo base_url('index.php/Home/Account')?>">Account</a></li>
+	 <?php } ?>
+	 <li class=""><a href="<?php echo base_url('index.php/Home/Contact')?>">Contact</a></li>
 	 <?php 
 	 if(!isset($this->session->user) || $this->session->user === NULL){?>
 	 <li class="">
 	 <a href="<?php echo base_url('index.php/Home/Login');?>" role="button" style="padding-right:0"><span class="btn btn-large btn-success">Login</span></a>
 	</li>
-	<li class=""><a href="<?php echo base_url('index.php/Home/Register')?>">Register</a></li>
+	<li class=""><a href="<?php echo base_url('index.php/Register')?>">Register</a></li>
 	 <?php }
 	 else{?>
-		<li class=""><a href="<?php echo base_url('index.php/Home/SignOut')?>">SignOut</a></li>
+		<li class=""><a href="<?php echo base_url('index.php/Home/SignOut')?>">Sign Out</a></li>
 	 <?php }?>
     </ul>
   </div>

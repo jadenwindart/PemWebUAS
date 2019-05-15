@@ -20,6 +20,26 @@
             redirect('Home');
         }
 
+        public function IncrementQty($idProduct){
+            $this->user->UpdateQty($idProduct,1);
+            redirect('Home/Cart');
+        }
+
+        public function DecrementQty($idProduct){
+            $this->user->UpdateQty($idProduct,-1);
+            redirect('Home/Cart');
+        }
         
+        public function Delete($idProduct){
+            $this->user->DeleteOrder($idProduct);
+            redirect('Home/Cart');
+        }
+
+        public function CheckOut(){
+            if($this->user->CheckOut($this->input->post('password'))){
+                redirect('/');
+            }
+            redirect('Home/CheckOut');
+        }
     }
 ?>

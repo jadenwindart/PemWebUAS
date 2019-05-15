@@ -26,10 +26,6 @@
 					<!-- Sidebar ================================================== -->
 					<!-- Sidebar end=============================================== -->
 					<div class="span9">
-						<ul class="breadcrumb">
-							<li><a href="<?php echo base_url('index.php/Home') ?>">Home</a> <span class="divider">/</span></li>
-							<li class="active"> SHOPPING CART</li>
-						</ul>
 						<h3>  SHOPPING CART [ <small><?php echo $this->user->CountOrder();?> Item(s) </small>]<a href="<?php echo base_url('index.php/Home')?>" class="btn btn-large pull-right"><i class="icon-arrow-left"></i> Continue Shopping </a></h3>	
 						<hr class="soft"/>		
 						
@@ -46,6 +42,7 @@
 							<tbody>
 								<?php 
 								if($ProductOrder !== NULL && count($ProductOrder) != 0){
+									$Total = 0;
 									foreach($ProductOrder as $Order){
 									?>
 
@@ -53,16 +50,17 @@
 									<td> <img width="60" src="<?php echo base_url('assets/Prod_Img/'.$Order['product_id'].'.jpg')?>" alt=""/></td>
 									<td><?php echo $Order['name']?></td>
 									<td>
-										<div class="input-append"><input class="span1" style="max-width:34px" placeholder="1" id="appendedInputButtons" size="16" type="text"><button class="btn" type="button"><i class="icon-minus"></i></button><button class="btn" type="button"><i class="icon-plus"></i></button><button class="btn btn-danger" type="button"><i class="icon-remove icon-white"></i></button>				</div>
+										<div class="input-append"><h5><?php echo $Order['qty']?></h5><a href="<?php echo base_url('index.php/Cart/DecrementQty/'.$Order['product_id'])?>" class="btn" type="button"><i class="icon-minus"></i></a><a href="<?php echo base_url('index.php/Cart/IncrementQty/'.$Order['product_id'])?>" class="btn" type="button"><i class="icon-plus"></i></a><a href="<?php echo base_url('index.php/Cart/Delete/'.$Order['product_id'])?>" class="btn btn-danger" type="button"><i class="icon-remove icon-white"></i></a>				</div>
 									</td>
-									<td><?php echo $Order['price']?></td>
-									<td><?php echo $Order['price']?></td>
+									<td><?php echo $Order['price'] ?></td>
+									<td><?php echo $Temp = $Order['price'] * $Order['qty']?></td>
 								</tr>
-								<?php }?>
+								<?php $Total += $Temp;
+								}?>
 
 								<tr>
 									<td colspan="6" style="text-align:right"><strong>TOTAL=</strong></td>
-									<td class="label label-important" style="display:block"> <strong> $155.00 </strong></td>
+									<td class="label label-important" style="display:block"> <strong> <?php echo $Total?> </strong></td>
 								</tr>
 									<?php }?>
 							</tbody>
@@ -82,7 +80,7 @@
 							</tr>
 						</table>
 						<?php if($ProductOrder !== NULL && count($ProductOrder) != 0){?>
-						<a href="login.html" class="btn btn-large pull-right">Next <i class="icon-arrow-right"></i></a>
+						<a href="<?php echo base_url('index.php/Home/CheckOut')?>" class="btn btn-large pull-right">Next <i class="icon-arrow-right"></i></a>
 						<?php }?>
 					</div>
 				</div></div>

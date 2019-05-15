@@ -25,10 +25,6 @@
 	<div class="container">
 	<div class="row">
 	<div class="span9">
-    <ul class="breadcrumb">
-		<li><a href="index.html">Home</a> <span class="divider">/</span></li>
-		<li class="active">Login</li>
-    </ul>
 	<h3> Login</h3>	
 	<hr class="soft"/>
 	

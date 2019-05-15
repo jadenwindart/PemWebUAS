@@ -10,6 +10,7 @@
         private $address;
         private $phone;
         private $cart;
+        private $Balance;
 
         public function addUser($username,$password,$fname,$lname,$address,$phone){
             $passwordHash = password_hash($password,PASSWORD_BCRYPT);
@@ -19,7 +20,8 @@
                 'first_name' => $fname,
                 'last_name' => $lname,
                 'address' => $address,
-                'phone' => $phone
+                'phone' => $phone,
+                'Balance' => 999999
             );
             $this->db->trans_begin();
             $this->db->insert('user',$data);
@@ -35,7 +37,6 @@
             $this->db->where('username',$username);
             $query = $this->db->get('user');
             $userData = $query->result_array();
-            var_dump($userData);
             if(password_verify($password,$userData[0]['password'])){
                 $this->ID = $userData[0]['user_id'];
                 $this->FirstName = $userData[0]['first_name'];
@@ -43,12 +44,14 @@
                 $this->username = $userData[0]['username'];
                 $this->address = $userData[0]['address'];
                 $this->phone = $userData[0]['phone'];
+                $this->Balance = $userData[0]['Balance'];
                 return TRUE;
             }
             return FALSE;
         }
 
         public function GetOrder(){
+            $this->db->cache_on();
             $this->db->join('product','product.product_id = orders.product_id');
             $this->db->where('user_id',$this->ID);
             $query = $this->db->get('orders');
@@ -69,7 +72,8 @@
                 'username' => $this->username,
                 'address' => $this->address,
                 'phone' => $this->phone,
-                'cart' => $this->cart
+                'cart' => $this->cart,
+                'Balance' => $this->Balance
             );
             return serialize($data); 
         }
@@ -83,12 +87,14 @@
             $this->address = $data['address'];
             $this->phone = $data['phone'];
             $this->cart = $data['cart'];
+            $this->Balance = $data['Balance'];
         }
 
         public function AddOrder($idProduct){
             $data = array(
                 'user_id' => $this->ID,
-                'product_id' => $idProduct
+                'product_id' => $idProduct,
+                'qty' => 1
             );
             $this->db->trans_start();
             $this->db->insert('orders',$data);
@@ -98,11 +104,73 @@
                 return FALSE;
             }
             $this->db->trans_commit();
+            $this->db->cache_off();
             return TRUE;
+        }
+
+        public function UpdateQty($idProduct,$value){
+            
+            $this->db->trans_start();
+            $this->db->where('user_id',$this->ID);
+            $this->db->where('product_id',$idProduct);
+            $this->db->set('qty','qty+'.$value,FALSE);
+            $this->db->update('orders');
+            $this->db->trans_complete();
+            if($this->db->trans_status() === FALSE){
+                $this->db->trans_rollback();
+                return FALSE;
+            }
+            $this->db->trans_commit();
+            $this->db->cache_off();
+            return TRUE;
+        }
+
+        public function DeleteOrder($idProduct){
+            if($idProduct !== NULL){
+                $this->db->trans_start();
+                $this->db->where('user_id',$this->ID);
+                $this->db->where('product_id',$idProduct);
+                $this->db->delete('orders');
+                $this->db->trans_complete();
+                if($this->db->trans_status() === FALSE){
+                    $this->db->trans_rollback();
+                    return FALSE;
+                }
+                $this->db->trans_commit();
+                $this->db->cache_off();
+                return TRUE;
+            }
+        }
+
+        public function CheckOut($password){
+            $this->db->where('user_id',$this->ID);
+            $this->db->select('password');
+            $query = $this->db->get('user');
+            $userData = $query->result_array();
+            if(password_verify($password,$userData[0]['password'])){
+                return TRUE;
+            }
+            return FALSE;
         }
 
         public function GetAddress(){
             return $this->address;
+        }
+
+        public function GetUsername(){
+            return $this->username;
+        }
+
+        public function GetName(){
+            return $this->FirstName . " " . $this->LastName;
+        }
+
+        public function GetMobilePhone(){
+            return $this->phone;
+        }
+
+        public function GetBalance(){
+            return $this->Balance;
         }
     }
 ?>
