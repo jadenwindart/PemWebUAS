@@ -16,13 +16,16 @@
         public function index(){
             $this->load->model('product');
             $productParam = array('products' => $this->product->GetAllProduct($this->input->post('searchProduct')));
+            $topProduct = $this->product->getTopProduct();
+            $category = $this->product->getCategory();
             $data = array(
                 'style' => $this->load->view('bootshop/Template/style',NULL,TRUE),
                 'header' => $this->load->view('bootshop/Template/header',array('CountOrder' => $this->user->CountOrder()),TRUE),
                 'carousel' => $this->load->view('bootshop/HomePage/carousel',NULL,TRUE),
                 'products' => $this->load->view('bootshop/HomePage/product',$productParam,TRUE),
                 'script' => $this->load->view('bootshop/Template/script',NULL,TRUE),
-                'footer' => $this->load->view('bootshop/Template/footer',NULL,TRUE)
+                'footer' => $this->load->view('bootshop/Template/footer',NULL,TRUE),
+                'sidebar' => $this->load->view('bootshop/Template/sidebar',array('topProduct' => $topProduct, 'category' => $category),TRUE)
                 
             );
             $this->load->view('bootshop/index.php',$data);
@@ -109,6 +112,23 @@
                 'Address' => $this->user->GetAddress()
             );
             $this->load->view('bootshop/CheckOutView',$data);
+        }
+
+        public function ProductDetail($id) {
+            $this->load->model('product');
+            
+            $topProduct = $this->product->getTopProduct();
+            $category = $this->product->getCategory();
+
+            $data = array(
+                'style' => $this->load->view('bootshop/Template/style',NULL,TRUE),
+                'header' => $this->load->view('bootshop/Template/header',array('CountOrder' => $this->user->CountOrder()),TRUE),
+                'script' => $this->load->view('bootshop/Template/script',NULL,TRUE),
+                'footer' => $this->load->view('bootshop/Template/footer',NULL,TRUE),
+                'sidebar' => $this->load->view('bootshop/Template/sidebar',array('topProduct' => $topProduct, 'category' => $category),TRUE),
+                'product' => $this->product->getProduct($id)
+            );
+            $this->load->view('bootshop/product_details.php',$data);
         }
     }
 ?>

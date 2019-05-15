@@ -40,7 +40,7 @@
 	<div class="row">
 		<?php foreach($product as $row) {?>	  
 			<div id="gallery" class="span3">
-				<img src="<?php echo base_url('assets/Prod_Img/'.$row['product_id'].".jpg")?>" style="width:100%" alt="MSI GL62 7RDX"/>
+				<img src="<?php echo base_url('assets/Prod_Img/'.$row['product_id'].".jpg")?>" style="width:100%" alt="<?php echo $row['name']?>"/>
 			</div>
 			<div class="span6">
 				<h3> <?php echo $row['name'] ?> </h3>
@@ -70,12 +70,10 @@
 				<hr class="soft clr"/>
 				<p>
 					<!-- Laptop gaming dengan layar 15.6" yang memiliki prosesor Core i7, penyimpanan memori yang cepat, memori pendukung DDR4-2400 terbaru yang akan membuat performa game lebih cepat -->
-				
 					<?php
 						$desc = preg_replace('(\s-)', '<br>-',  $row['description']);
 						echo $desc;
 					?>
-
 				</p>
 		<?php } ?>
 				<!-- <a class="btn btn-small pull-right" href="#detail">More Details</a> -->

@@ -26,6 +26,9 @@
 <div id="mainBody">
 	<div class="container">
 	<div class="row">
+<!-- Sidebar ================================================== -->
+<?php echo $sidebar ?>
+<!-- Sidebar end=============================================== -->
 		<div class="span9">	
 		<h4>List Products </h4>
 			  <?php echo $products?>	
