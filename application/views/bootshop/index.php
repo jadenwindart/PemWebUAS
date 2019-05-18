@@ -26,8 +26,20 @@
 <div id="mainBody">
 	<div class="container">
 	<div class="row">
+<!-- Sidebar ================================================== -->
+<?php echo $sidebar ?>
+<!-- Sidebar end=============================================== -->
 		<div class="span9">	
-		<h4>List Products </h4>
+		<h4>
+			<?php
+				if(isset($cat_id)) {
+					echo "Category : ".$allCategory[$cat_id]['category'];
+				}
+				else {
+					echo "All Product";
+				}
+			?>
+		</h4>
 			  <?php echo $products?>	
 		</div>
 		</div>
