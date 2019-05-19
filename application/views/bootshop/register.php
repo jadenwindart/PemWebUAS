@@ -43,33 +43,40 @@
 	<?php echo form_open('Register',array('class'=>'form-horizontal'));?>
 		<h4>Your personal information</h4>
 		<div class="control-group">
-			<label class="control-label" for="inputFname1">First name <sup>*</sup></label>
+			<label class="control-label" for="inputFname1">First name</label>
 			<div class="controls">
-			  <input type="text" id="FirstName" name="FirstName" placeholder="First Name">
+			  <input type="text" id="FirstName" name="FirstName" placeholder="First Name" value="<?php echo set_value('FirstName')?>">
+				<?php echo form_error('FirstName')?>
 			</div>
-			<?php echo form_error('FirstName')?>
 		 </div>
 		 <div class="control-group">
-			<label class="control-label" for="inputLnam">Last name <sup>*</sup></label>
+			<label class="control-label" for="inputLnam">Last name</label>
 			<div class="controls">
-			  <input type="text" id="LastName" name="LastName" placeholder="Last Name">
+			  <input type="text" id="LastName" name="LastName" placeholder="Last Name" value="<?php echo set_value('LastName')?>">
+				<?php echo form_error('LastName')?>
 			</div>
-			<?php echo form_error('LastName')?>
 		 </div>
 		<div class="control-group">
-		<label class="control-label" for="username">Username <sup>*</sup></label>
+		<label class="control-label" for="username">Username</label>
 		<div class="controls">
-		  <input type="text" id="username" name="username" placeholder="Username">
+		  <input type="text" id="username" name="username" placeholder="Username" value="<?php echo set_value('username')?>">
+			<?php echo form_error('username')?>
 		</div>
-		<?php echo form_error('username')?>
 	  </div>	  
 	<div class="control-group">
-		<label class="control-label" for="password">Password <sup>*</sup></label>
+		<label class="control-label" for="password">Password</label>
 		<div class="controls">
 		  <input type="password" id="password"  name="password" placeholder="Password">
+			<?php echo form_error('password')?>
 		</div>
-		<?php echo form_error('password')?>
-	  </div>	  
+		</div>
+	<div class="control-group">
+		<label class="control-label" for="retype_pass">Retype Password</label>
+		<div class="controls">
+		  <input type="password" id="retype_pass"  name="retype_pass" placeholder="Password">
+			<?php echo form_error('retype_pass')?>
+		</div>
+	  </div>	
 		<!-- <div class="control-group">
 		<label class="control-label">Date of Birth <sup>*</sup></label>
 		<div class="controls">
@@ -115,44 +122,44 @@
 		<h4>Your address</h4>
 		
 		<div class="control-group">
-			<label class="control-label" for="address">Address<sup>*</sup></label>
+			<label class="control-label" for="address">Address</label>
 			<div class="controls">
-			  <input type="text" id="address" name="address" placeholder="Address"/>
+			  <input type="text" id="address" name="address" placeholder="Address" value="<?php echo set_value('address')?>">
+				<?php echo form_error('address')?>
 			</div>
-			<?php echo form_error('address')?>
 		</div>
 		<div class="control-group">
-			<label class="control-label" for="city">City<sup>*</sup></label>
+			<label class="control-label" for="city">City</label>
 			<div class="controls">
-			  <input type="text" id="city" name="city" placeholder="City"/> 
+			  <input type="text" id="city" name="city" placeholder="City" value="<?php echo set_value('city')?>"> 
+				<?php echo form_error('city')?>
 			</div>
-			<?php echo form_error('city')?>
 		</div>	
 		<div class="control-group">
-			<label class="control-label" for="postcode">Zip / Postal Code<sup>*</sup></label>
+			<label class="control-label" for="postcode">Zip / Postal Code</label>
 			<div class="controls">
-			  <input type="text" id="postcode" name="postcode" placeholder="Zip / Postal Code"/> 
+			  <input type="text" id="postcode" name="postcode" placeholder="Zip / Postal Code" value="<?php echo set_value('postcode')?>"> 
+				<?php echo form_error('postcode')?>
 			</div>
-			<?php echo form_error('postcode')?>
 		</div>
 		
 		<div class="control-group">
-			<label class="control-label" for="country">Country<sup>*</sup></label>
+			<label class="control-label" for="country">Country</label>
 			<div class="controls">
-				<input type="text" name="country" id="country" placeholder="Country">
+				<input type="text" name="country" id="country" placeholder="Country" value="<?php echo set_value('country')?>">
+				<?php echo form_error('country')?>
 			</div>
-			<?php echo form_error('country')?>
 		</div>
 		
 		<div class="control-group">
-			<label class="control-label" for="mobile">Mobile Phone </label>
+			<label class="control-label" for="mobile">Mobile Phone</label>
 			<div class="controls">
-			  <input type="text"  name="phone" id="mobile" placeholder="Mobile Phone"/> 
+			  <input type="text" name="phone" id="mobile" placeholder="Mobile Phone" value="<?php echo set_value('phone')?>"> 
+				<?php echo form_error('phone')?>
 			</div>
-			<?php echo form_error('phone')?>
 		</div>
 		
-	<p><sup>*</sup>Required field	</p>
+	<!-- <p><sup>*</sup>Required field	</p> -->
 	
 	<div class="control-group">
 			<div class="controls">
