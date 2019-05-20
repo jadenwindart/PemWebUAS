@@ -63,5 +63,12 @@ class Cpanel extends CI_Controller{
         $this->session->sess_destroy();
         redirect('/Cpanel');
     }
+
+    public function Transaction(){
+        $this->load->model('admin');
+        $data['navbar'] = $this->load->view('Cpanel_navbar',NULL,TRUE);
+        $data['transaction'] = $this->admin->GetAllTransaction();
+        $this->load->view('Cpanel_Trans',$data);
+    }
 }
 ?>
