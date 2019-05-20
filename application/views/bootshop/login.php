@@ -40,12 +40,14 @@
 							<label class="control-label" for="inputUsername">Username</label>
 							<div class="controls">
 								<input type="text" id="username" name="username" placeholder="Username">
+								<?php echo form_error('username')?>
 							</div>
 						</div>
 						<div class="control-group">
 							<label class="control-label" for="inputPassword1">Password</label>
 							<div class="controls">
 								<input type="password" id="inputPassword1" name="password" placeholder="Password">
+								<?php echo form_error('password')?>
 							</div>
 						</div>
 						<div class="control-group">

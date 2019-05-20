@@ -34,10 +34,39 @@
         }
 
         public function LoginCheck(){
-            if($this->user->CheckLogin($this->input->post('username'),$this->input->post('password'))){
-                $this->session->set_userdata('user',$this->user->SerializeData());
+            //Form Error Checking
+            $this->form_validation->set_rules('username', 'Username', 'required', array('required' => 'This field cannot be empty'));
+            $this->form_validation->set_rules('password', 'Password', 
+                array(
+                    array(
+                        'callback',
+                        function($pass) {
+                            if(empty($pass)) {
+                                $this->form_validation->set_message('callback', 'This field cannot be empty');
+                                return FALSE;
+                            }
+                            else {
+                                if($this->user->CheckLogin($this->input->post('username'),$pass)) {
+                                    return TRUE;
+                                }
+                                else {
+                                    $this->form_validation->set_message('callback', 'Username or Password is incorrect');
+                                    return FALSE;
+                                }
+                            }
+                        }
+                    )
+                )
+            );
+            $this->form_validation->set_error_delimiters('<p style="color:red;">','</p>');
+
+            if($this->form_validation->run() == FALSE) {
+                $this->Login();
             }
-            redirect('/Home');
+            else {
+                $this->session->set_userdata('user',$this->user->SerializeData());
+                redirect('Home');
+            }
         }
 
         public function Login(){

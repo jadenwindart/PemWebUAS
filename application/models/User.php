@@ -37,14 +37,27 @@
             $this->db->where('username',$username);
             $query = $this->db->get('user');
             $userData = $query->result_array();
-            if(password_verify($password,$userData[0]['password'])){
-                $this->ID = $userData[0]['user_id'];
-                $this->FirstName = $userData[0]['first_name'];
-                $this->LastName = $userData[0]['last_name'];
-                $this->username = $userData[0]['username'];
-                $this->address = $userData[0]['address'];
-                $this->phone = $userData[0]['phone'];
-                $this->Balance = $userData[0]['Balance'];
+
+            if(!empty($userData)) {
+                if(password_verify($password,$userData[0]['password'])){
+                    $this->ID = $userData[0]['user_id'];
+                    $this->FirstName = $userData[0]['first_name'];
+                    $this->LastName = $userData[0]['last_name'];
+                    $this->username = $userData[0]['username'];
+                    $this->address = $userData[0]['address'];
+                    $this->phone = $userData[0]['phone'];
+                    $this->Balance = $userData[0]['Balance'];
+                    return TRUE;
+                }
+            }
+            return FALSE;
+        }
+
+        public function CheckUsernameUnique($username) {
+            $this->db->where('username', $username);
+            $count = $this->db->count_all_results('user');
+
+            if($count == 0) {
                 return TRUE;
             }
             return FALSE;
