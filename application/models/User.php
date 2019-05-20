@@ -11,6 +11,7 @@
         private $phone;
         private $cart;
         private $Balance;
+        private $order;
 
         public function addUser($username,$password,$fname,$lname,$address,$phone){
             $passwordHash = password_hash($password,PASSWORD_BCRYPT);
@@ -30,6 +31,15 @@
                 $this->db->trans_rollback();
                 return FALSE;
             }
+            $this->db->select('user_id');
+            $this->db->where('username='.$username);
+            $this->db->from('user');
+            $userid = $this->db->get_compiled_select();
+            $dataCart = array(
+                'user_id' => $userid,
+                'status' => 0
+            );
+            $this->db->insert('Cart',$dataCart);
             return TRUE;
         }
 
@@ -37,44 +47,56 @@
             $this->db->where('username',$username);
             $query = $this->db->get('user');
             $userData = $query->result_array();
-
-            if(!empty($userData)) {
-                if(password_verify($password,$userData[0]['password'])){
-                    $this->ID = $userData[0]['user_id'];
-                    $this->FirstName = $userData[0]['first_name'];
-                    $this->LastName = $userData[0]['last_name'];
-                    $this->username = $userData[0]['username'];
-                    $this->address = $userData[0]['address'];
-                    $this->phone = $userData[0]['phone'];
-                    $this->Balance = $userData[0]['Balance'];
-                    return TRUE;
+            if(password_verify($password,$userData[0]['password'])){
+                $this->ID = $userData[0]['user_id'];
+                $this->FirstName = $userData[0]['first_name'];
+                $this->LastName = $userData[0]['last_name'];
+                $this->username = $userData[0]['username'];
+                $this->address = $userData[0]['address'];
+                $this->phone = $userData[0]['phone'];
+                $this->Balance = $userData[0]['Balance'];
+                $this->GetCart();
+                if($this->cart === NULL){
+                    $dataCart = array(
+                        'user_id' => $this->ID,
+                        'status' => 0
+                    );
+                    $this->db->insert('Cart',$dataCart);
+                    $this->GetOrder();
                 }
-            }
-            return FALSE;
-        }
-
-        public function CheckUsernameUnique($username) {
-            $this->db->where('username', $username);
-            $count = $this->db->count_all_results('user');
-
-            if($count == 0) {
                 return TRUE;
             }
             return FALSE;
         }
 
-        public function GetOrder(){
-            $this->db->cache_on();
-            $this->db->join('product','product.product_id = orders.product_id');
-            $this->db->where('user_id',$this->ID);
-            $query = $this->db->get('orders');
-            $this->cart = $query->result_array();
+        public function GetCart(){
+            if($this->cart == NULL || !isset($this->cart)){
+                $this->db->select('idCart');
+                $this->db->where('user_id', $this->ID);
+                $this->db->where('status',0);
+                $this->db->order_by('idCart','DESC');
+                $this->db->limit(1);
+                $query = $this->db->get('Cart');
+                $userData = $query->result_array();
+                $this->cart = $userData[0]['idCart'];
+            }
             return $this->cart;
         }
 
+        public function GetOrder(){
+            $this->db->cache_on();
+            $this->db->join('Cart','Cart.idCart = orders.idCart');
+            $this->db->join('product','product.product_id = orders.product_id');
+            $this->db->where('user_id',$this->ID);
+            $this->db->where('status',0);
+            $query = $this->db->get('orders');
+            $this->order = $query->result_array();
+            return $this->order;
+        }
+
         public function CountOrder(){
-            if(!isset($this->cart)) $this->GetOrder();
-            return count($this->cart);
+            if(!isset($this->order)) $this->GetOrder();
+            return count($this->order);
         }
 
         public function SerializeData(){
@@ -86,7 +108,8 @@
                 'address' => $this->address,
                 'phone' => $this->phone,
                 'cart' => $this->cart,
-                'Balance' => $this->Balance
+                'Balance' => $this->Balance,
+                'order' => serialize($this->order),
             );
             return serialize($data); 
         }
@@ -101,11 +124,12 @@
             $this->phone = $data['phone'];
             $this->cart = $data['cart'];
             $this->Balance = $data['Balance'];
+            $this->order = unserialize($data['order']);
         }
 
         public function AddOrder($idProduct){
             $data = array(
-                'user_id' => $this->ID,
+                'idCart' => $this->cart,
                 'product_id' => $idProduct,
                 'qty' => 1
             );
@@ -124,6 +148,7 @@
         public function UpdateQty($idProduct,$value){
             
             $this->db->trans_start();
+            $this->db->join('cart','cart.idCart = orders.idCart');
             $this->db->where('user_id',$this->ID);
             $this->db->where('product_id',$idProduct);
             $this->db->set('qty','qty+'.$value,FALSE);
@@ -141,7 +166,8 @@
         public function DeleteOrder($idProduct){
             if($idProduct !== NULL){
                 $this->db->trans_start();
-                $this->db->where('user_id',$this->ID);
+                $this->db->join('cart','cart.idCart = orders.idCart');
+                $this->db->where('idCart',$this->cart);
                 $this->db->where('product_id',$idProduct);
                 $this->db->delete('orders');
                 $this->db->trans_complete();
@@ -161,6 +187,9 @@
             $query = $this->db->get('user');
             $userData = $query->result_array();
             if(password_verify($password,$userData[0]['password'])){
+                $this->db->where('idCart',$this->cart);
+                $this->db->set('status','status+1',false);
+                $this->db->update('Cart');
                 return TRUE;
             }
             return FALSE;

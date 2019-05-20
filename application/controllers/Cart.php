@@ -37,9 +37,16 @@
 
         public function CheckOut(){
             if($this->user->CheckOut($this->input->post('password'))){
-                redirect('/');
+                $data = array(
+                    'style' => $this->load->view('bootshop/Template/style',NULL,TRUE),
+                    'header' => $this->load->view('bootshop/Template/header',array('CountOrder' => $this->user->CountOrder()),TRUE),
+                    'script' => $this->load->view('bootshop/Template/script',NULL,TRUE),
+                    'footer' => $this->load->view('bootshop/Template/footer',NULL,TRUE)
+                );
+                $this->load->view('bootshop/CheckOutSuccess',$data);
+                
             }
-            redirect('Home/CheckOut');
+            else redirect('Home/CheckOut');
         }
     }
 ?>
