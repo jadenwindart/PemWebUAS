@@ -1,11 +1,14 @@
 <div  id="footerSection">
 	<div class="container">
 		<div class="row">
-			<div class="span3">
-				<h5>ACCOUNT</h5>
-				<a href="<?php echo base_url('index.php/Home/Account')?>">YOUR ACCOUNT</a>
-				<a href="<?php echo base_url('index.php/Home/Cart')?>">ORDER</a>
-				</div>
+			<?php 
+	 			if(isset($this->session->user) || $this->session->user !== NULL) {
+					echo "<div class='span3'>";
+					echo "<h5>ACCOUNT</h5>";
+					echo "<a href='".base_url('index.php/Home/Account')."'>YOUR ACCOUNT</a>";
+					echo "<a href='".base_url('index.php/Home/Cart')."'>ORDER</a>";
+					echo "</div>";
+			?>
 			<div class="span3">
 				<h5>INFORMATION</h5>
 				<a href="<?php echo base_url('index.php/Home/Contact')?>">CONTACT</a>  
