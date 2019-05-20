@@ -148,8 +148,8 @@
         public function UpdateQty($idProduct,$value){
             
             $this->db->trans_start();
-            $this->db->join('cart','cart.idCart = orders.idCart');
-            $this->db->where('user_id',$this->ID);
+           
+            $this->db->where('idCart',$this->cart);
             $this->db->where('product_id',$idProduct);
             $this->db->set('qty','qty+'.$value,FALSE);
             $this->db->update('orders');
@@ -166,7 +166,6 @@
         public function DeleteOrder($idProduct){
             if($idProduct !== NULL){
                 $this->db->trans_start();
-                $this->db->join('cart','cart.idCart = orders.idCart');
                 $this->db->where('idCart',$this->cart);
                 $this->db->where('product_id',$idProduct);
                 $this->db->delete('orders');

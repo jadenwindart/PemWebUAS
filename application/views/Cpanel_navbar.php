@@ -16,6 +16,10 @@
 
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav navbar-right">
+				<li >
+						<a href="<?php echo base_url('index.php/Cpanel/Transaction')?>" type="button"></a>
+						
+					</li>
 					<li >
 						<a class="" type="button" data-toggle="dropdown">Hello, <?php echo $this->session->admin; ?>
 						<span class="caret"></span></a>
