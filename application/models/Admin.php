@@ -15,7 +15,7 @@
         }
 
         public function GetAllTransaction(){
-            $this->db->join('user','user.user_id = Cart.user_id');
+            $this->db->join('user','user.user_id = cart.user_id');
             $this->db->select('username,idCart,status');
             $query = $this->db->get('cart');
             return $query->result_array();
