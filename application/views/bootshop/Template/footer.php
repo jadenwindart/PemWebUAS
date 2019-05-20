@@ -8,6 +8,7 @@
 					echo "<a href='".base_url('index.php/Home/Account')."'>YOUR ACCOUNT</a>";
 					echo "<a href='".base_url('index.php/Home/Cart')."'>ORDER</a>";
 					echo "</div>";
+				}
 			?>
 			<div class="span3">
 				<h5>INFORMATION</h5>
