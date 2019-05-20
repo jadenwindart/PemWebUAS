@@ -190,6 +190,11 @@
                 $this->db->where('idCart',$this->cart);
                 $this->db->set('status','status+1',false);
                 $this->db->update('Cart');
+                $dataCart = array(
+                    'user_id' => $this->ID,
+                    'status' => 0
+                );
+                $this->db->insert('Cart',$dataCart);
                 return TRUE;
             }
             return FALSE;
