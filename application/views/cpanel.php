@@ -5,8 +5,10 @@
 </head>
 <body>
     <?php echo $navbar;?>
-    <div class="row" style="margin-top:100px;">
-        <div class="col-md-12"><?php echo $crud['output'];?></div>
+    <div class="container-fluid">
+        <div class="row" style="margin-top:100px;">
+            <div class="col-md-12"><?php echo $crud['output'];?></div>
+        </div>
     </div>
 </body>
     <?php echo $script?>

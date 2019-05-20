@@ -69,21 +69,30 @@
             return FALSE;
         }
 
+        public function CheckUsernameUnique($username) {
+            $this->db->where('username', $username);
+            $count = $this->db->count_all_results('user');
+            if($count == 0) {
+                return TRUE;
+            }
+            return FALSE;
+        }
+
         public function GetCart(){
-            $this->db->cache_on();
-                $this->db->select('idCart');
-                $this->db->where('user_id', $this->ID);
-                $this->db->where('status',0);
-                $this->db->order_by('idCart','DESC');
-                $this->db->limit(1);
-                $query = $this->db->get('Cart');
-                $userData = $query->result_array();
-                $this->cart = $userData[0]['idCart'];
+            //$this->db->cache_on();
+            $this->db->select('idCart');
+            $this->db->where('user_id', $this->ID);
+            $this->db->where('status',0);
+            $this->db->order_by('idCart','DESC');
+            $this->db->limit(1);
+            $query = $this->db->get('Cart');
+            $userData = $query->result_array();
+            $this->cart = $userData[0]['idCart'];
             return $this->cart;
         }
 
         public function GetOrder(){
-            $this->db->cache_on();
+            //$this->db->cache_on();
             $this->db->join('Cart','Cart.idCart = orders.idCart');
             $this->db->join('product','product.product_id = orders.product_id');
             $this->db->where('user_id',$this->ID);
@@ -141,11 +150,17 @@
                 return FALSE;
             }
             $this->db->trans_commit();
-            $this->db->cache_off();
+            //$this->db->cache_off();
             return TRUE;
         }
 
         public function UpdateQty($idProduct,$value){
+            if($value == -1) {
+                $this->db->where('product_id',$idProduct);
+                $qty = $this->db->get('orders')->result_array();
+
+                if($qty[0]['qty'] == 1) $value = 0;
+            }
             
             $this->db->trans_start();
            
@@ -159,7 +174,7 @@
                 return FALSE;
             }
             $this->db->trans_commit();
-            $this->db->cache_off();
+            //$this->db->cache_off();
             return TRUE;
         }
 
@@ -175,7 +190,7 @@
                     return FALSE;
                 }
                 $this->db->trans_commit();
-                $this->db->cache_off();
+                //$this->db->cache_off();
                 return TRUE;
             }
         }
@@ -186,7 +201,7 @@
             $query = $this->db->get('user');
             $userData = $query->result_array();
             if(password_verify($password,$userData[0]['password'])){
-                $this->db->cache_off();
+                //$this->db->cache_off();
                 $this->db->where('idCart',$this->cart);
                 $this->db->set('status','status+1',false);
                 $this->db->update('Cart');

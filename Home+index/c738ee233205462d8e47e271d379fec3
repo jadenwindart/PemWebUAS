@@ -1,0 +1,33 @@
+O:12:"CI_DB_result":8:{s:7:"conn_id";N;s:9:"result_id";N;s:12:"result_array";a:3:{i:0;a:10:{s:8:"order_id";s:2:"31";s:10:"product_id";s:1:"1";s:3:"qty";s:2:"-2";s:6:"idCart";s:1:"6";s:7:"user_id";s:1:"4";s:6:"status";s:1:"0";s:4:"name";s:49:"GIGABYTE AERO 15 Classic-YA-U96ASP Gaming Laptop ";s:11:"description";s:713:"-15.6" 0.11 inch ultra-thin bezel | AUO UHD Adobe RGB 100% 3840x2160 IPS Anti-Glare display LCD | X-Rite Pantone Certified for color calibration
+-Intel Core i9-9980hk (2.4Ghz-5.0GHz) | NVIDIA GeForce RTX 2080 GDDR6 8GB 
+-Supports NVIDIA Optimus technology
+-64GB DDR4 2666MHz Samsung DRAM module | M.2 NVMe PCIe 2TB Intel 760P SSD | 
+-Windows 10 Pro High end
+-Microsoft Azure AI | all Intel inside | Intel Thunderbolt 3 | Intel Wi-Fi AC adapter
+-94.24Wh 9hrs Long battery life | per-key RGB backlit programmable keyboard | UHS-II SD card reader
+-Killerdoubleshot Pro | Nahimic 3D Audio | Bluetooth V5.0 + LE | HDMI2.0 | mini-DP 1.4 | 230W adapter
+-14 x 9.8 x 0.74 inch | 4.49 Ibis | 1 Year Global warranty ";s:5:"price";s:8:"20500000";s:8:"category";s:1:"1";}i:1;a:10:{s:8:"order_id";s:2:"32";s:10:"product_id";s:1:"2";s:3:"qty";s:1:"1";s:6:"idCart";s:1:"6";s:7:"user_id";s:1:"4";s:6:"status";s:1:"0";s:4:"name";s:66:"Western Digital 4TB Black My Passport Portable External Hard Drive";s:11:"description";s:322:"-Auto backup with included WD Backup software
+-Password protection with hardware encryption
+-Trusted drive built with WD reliability
+-USB 3.0 port; USB 2.0 compatible. SYSTEM COMPATIBILITY: Windows 10, Windows 8.1, Windows 7. Requires reformatting for Mac OS X operating system
+-3-year manufacturer's limited warranty ";s:5:"price";s:7:"1590000";s:8:"category";s:1:"4";}i:2;a:10:{s:8:"order_id";s:2:"33";s:10:"product_id";s:1:"2";s:3:"qty";s:1:"1";s:6:"idCart";s:1:"6";s:7:"user_id";s:1:"4";s:6:"status";s:1:"0";s:4:"name";s:66:"Western Digital 4TB Black My Passport Portable External Hard Drive";s:11:"description";s:322:"-Auto backup with included WD Backup software
+-Password protection with hardware encryption
+-Trusted drive built with WD reliability
+-USB 3.0 port; USB 2.0 compatible. SYSTEM COMPATIBILITY: Windows 10, Windows 8.1, Windows 7. Requires reformatting for Mac OS X operating system
+-3-year manufacturer's limited warranty ";s:5:"price";s:7:"1590000";s:8:"category";s:1:"4";}}s:13:"result_object";a:3:{i:0;O:8:"stdClass":10:{s:8:"order_id";s:2:"31";s:10:"product_id";s:1:"1";s:3:"qty";s:2:"-2";s:6:"idCart";s:1:"6";s:7:"user_id";s:1:"4";s:6:"status";s:1:"0";s:4:"name";s:49:"GIGABYTE AERO 15 Classic-YA-U96ASP Gaming Laptop ";s:11:"description";s:713:"-15.6" 0.11 inch ultra-thin bezel | AUO UHD Adobe RGB 100% 3840x2160 IPS Anti-Glare display LCD | X-Rite Pantone Certified for color calibration
+-Intel Core i9-9980hk (2.4Ghz-5.0GHz) | NVIDIA GeForce RTX 2080 GDDR6 8GB 
+-Supports NVIDIA Optimus technology
+-64GB DDR4 2666MHz Samsung DRAM module | M.2 NVMe PCIe 2TB Intel 760P SSD | 
+-Windows 10 Pro High end
+-Microsoft Azure AI | all Intel inside | Intel Thunderbolt 3 | Intel Wi-Fi AC adapter
+-94.24Wh 9hrs Long battery life | per-key RGB backlit programmable keyboard | UHS-II SD card reader
+-Killerdoubleshot Pro | Nahimic 3D Audio | Bluetooth V5.0 + LE | HDMI2.0 | mini-DP 1.4 | 230W adapter
+-14 x 9.8 x 0.74 inch | 4.49 Ibis | 1 Year Global warranty ";s:5:"price";s:8:"20500000";s:8:"category";s:1:"1";}i:1;O:8:"stdClass":10:{s:8:"order_id";s:2:"32";s:10:"product_id";s:1:"2";s:3:"qty";s:1:"1";s:6:"idCart";s:1:"6";s:7:"user_id";s:1:"4";s:6:"status";s:1:"0";s:4:"name";s:66:"Western Digital 4TB Black My Passport Portable External Hard Drive";s:11:"description";s:322:"-Auto backup with included WD Backup software
+-Password protection with hardware encryption
+-Trusted drive built with WD reliability
+-USB 3.0 port; USB 2.0 compatible. SYSTEM COMPATIBILITY: Windows 10, Windows 8.1, Windows 7. Requires reformatting for Mac OS X operating system
+-3-year manufacturer's limited warranty ";s:5:"price";s:7:"1590000";s:8:"category";s:1:"4";}i:2;O:8:"stdClass":10:{s:8:"order_id";s:2:"33";s:10:"product_id";s:1:"2";s:3:"qty";s:1:"1";s:6:"idCart";s:1:"6";s:7:"user_id";s:1:"4";s:6:"status";s:1:"0";s:4:"name";s:66:"Western Digital 4TB Black My Passport Portable External Hard Drive";s:11:"description";s:322:"-Auto backup with included WD Backup software
+-Password protection with hardware encryption
+-Trusted drive built with WD reliability
+-USB 3.0 port; USB 2.0 compatible. SYSTEM COMPATIBILITY: Windows 10, Windows 8.1, Windows 7. Requires reformatting for Mac OS X operating system
+-3-year manufacturer's limited warranty ";s:5:"price";s:7:"1590000";s:8:"category";s:1:"4";}}s:20:"custom_result_object";a:0:{}s:11:"current_row";i:0;s:8:"num_rows";i:3;s:8:"row_data";N;}

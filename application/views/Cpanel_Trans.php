@@ -11,36 +11,38 @@
 	<br/>
 	<br/>
 	<br/>
-	<table id="table" class='table'>
-        <thead>
-            <th>Username</th>
-            <th>ID Cart</th>
-            <th>Status</th>
-        </thead>
-        <tbody>
-            <?php foreach( $transaction as $trans){?>
-                <tr>
-                    <td><?php echo $trans['username']?></td>
-                    <td><?php echo $trans['idCart']?></td>
-                    <td>
-                        <?php 
-                            switch($trans['status']){
-                                case 0 : echo "Belum Checkout";
-                                        break;
+    <div class="container-fluid">
+        <table id="table" class='table'>
+            <thead>
+                <th>Username</th>
+                <th>ID Cart</th>
+                <th>Status</th>
+            </thead>
+            <tbody>
+                <?php foreach( $transaction as $trans){?>
+                    <tr>
+                        <td><?php echo $trans['username']?></td>
+                        <td><?php echo $trans['idCart']?></td>
+                        <td>
+                            <?php 
+                                switch($trans['status']){
+                                    case 0 : echo "Belum Checkout";
+                                            break;
 
-                                case 1 : echo "Sudah Checkout";
-                                        break;
-                                default: echo "Error";
+                                    case 1 : echo "Sudah Checkout";
+                                            break;
+                                    default: echo "Error";
+                                
+                                }
                             
-                            }
-                        
-                        ?>
-                
-                    </td>
-                </tr>
-            <?php }?>
-        </tbody>
-    </table>
+                            ?>
+                    
+                        </td>
+                    </tr>
+                <?php }?>
+            </tbody>
+        </table>
+    </div>
 </body>
 <script src="<?php echo base_url('assets/js/jquery-1.11.3.min.js')?>" type="text/javascript"></script>
 <script src="<?php echo base_url('assets/js/bootstrap.min.js')?>" type="text/javascript"></script>

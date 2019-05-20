@@ -27,19 +27,6 @@
 	<div class="span9">
 	<h3> Registration</h3>	
 	<div class="well">
-	<!--
-	<div class="alert alert-info fade in">
-		<button type="button" class="close" data-dismiss="alert">×</button>
-		<strong>Lorem Ipsum is simply dummy</strong> text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
-	 </div>
-	<div class="alert fade in">
-		<button type="button" class="close" data-dismiss="alert">×</button>
-		<strong>Lorem Ipsum is simply dummy</strong> text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
-	 </div>
-	 <div class="alert alert-block alert-error fade in">
-		<button type="button" class="close" data-dismiss="alert">×</button>
-		<strong>Lorem Ipsum is simply</strong> dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
-	 </div> -->
 	<?php echo form_open('Register',array('class'=>'form-horizontal'));?>
 		<h4>Your personal information</h4>
 		<div class="control-group">
@@ -76,43 +63,7 @@
 		  <input type="password" id="retype_pass"  name="retype_pass" placeholder="Password">
 			<?php echo form_error('retype_pass')?>
 		</div>
-	  </div>	
-		<!-- <div class="control-group">
-		<label class="control-label">Date of Birth <sup>*</sup></label>
-		<div class="controls">
-		  <select class="span1" name="days">
-				<option value="">-</option>
-					<option value="1">1&nbsp;&nbsp;</option>
-					<option value="2">2&nbsp;&nbsp;</option>
-					<option value="3">3&nbsp;&nbsp;</option>
-					<option value="4">4&nbsp;&nbsp;</option>
-					<option value="5">5&nbsp;&nbsp;</option>
-					<option value="6">6&nbsp;&nbsp;</option>
-					<option value="7">7&nbsp;&nbsp;</option>
-			</select>
-			<select class="span1" name="days">
-				<option value="">-</option>
-					<option value="1">1&nbsp;&nbsp;</option>
-					<option value="2">2&nbsp;&nbsp;</option>
-					<option value="3">3&nbsp;&nbsp;</option>
-					<option value="4">4&nbsp;&nbsp;</option>
-					<option value="5">5&nbsp;&nbsp;</option>
-					<option value="6">6&nbsp;&nbsp;</option>
-					<option value="7">7&nbsp;&nbsp;</option>
-			</select>
-			<select class="span1" name="days">
-				<option value="">-</option>
-					<option value="1">1&nbsp;&nbsp;</option>
-					<option value="2">2&nbsp;&nbsp;</option>
-					<option value="3">3&nbsp;&nbsp;</option>
-					<option value="4">4&nbsp;&nbsp;</option>
-					<option value="5">5&nbsp;&nbsp;</option>
-					<option value="6">6&nbsp;&nbsp;</option>
-					<option value="7">7&nbsp;&nbsp;</option>
-			</select>
-		</div>
-	  </div> -->
-
+	  </div>
 	<div class="alert alert-block alert-error fade in">
 		<button type="button" class="close" data-dismiss="alert">×</button>
 		<strong>Please Fill The Required Field!</strong> 

@@ -7,10 +7,6 @@
 				echo "<li><a href='".base_url('index.php/Home/Category/'.$row['cat_id'])."'>".$row['category']."</a></li>";
 			}
 		?>
-			<!-- <li><a href="products.html"> LAPTOP</a></li>
-			<li><a href="products.html"> KEYBOARD AND MOUSE</a></li>
-			<li><a href="products.html">HEADPHONE</a></li>
-			<li><a href="products.html">EXTERNAL MEMORY</a></li> -->
 	</ul>
 	<br/>
 	<h4>Newest Product</h4>
@@ -31,20 +27,5 @@
 			echo "<br>";
 		}	
 	?>
-
-	<!-- <div class="thumbnail">
-		<img src="themes/images/laptop/MSIGL627RDXL1.png" alt="MSIGL627RDXL1"/>
-		<div class="caption">
-			<h5>MSI GL62 7RDX</h5>
-			<h4 style="text-align:center"><a class="btn" href="product_details.html"><a class="btn" href="#">Add to <i class="icon-shopping-cart"></i></a> <p style="color:orangered;">Rp.10.999.000</p></h4>
-		</div>
-	</div><br/>
-	<div class="thumbnail">
-		<img src="themes/images/headphone/razerthumbnail.png" title="Bootshop New Kindel" alt="Bootshop Kindel">
-		<div class="caption">
-			<h5>Razer Chimaera 5.1 Wireless gaming Headset</h5>
-				<h4 style="text-align:center"><a class="btn" href="product_details.html"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Add to <i class="icon-shopping-cart"></i></a> <p style="color:orangered;">Rp8.828.400</p></h4>
-		</div>
-	</div><br/> -->
 </div>
 <!-- Sidebar end=============================================== -->

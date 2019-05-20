@@ -34,7 +34,7 @@
 <!-- Sidebar end=============================================== -->
 	<div class="span9">
     <ul class="breadcrumb">
-    <li><a href="<?php echo base_url("index.php/Home") ?>">Home</a> <span class="divider">/</span></li>
+    <li><a href="<?php echo base_url("index.php") ?>">Home</a> <span class="divider">/</span></li>
     <li class="active">Product Details</li>
     </ul>	
 	<div class="row">
@@ -44,7 +44,6 @@
 			</div>
 			<div class="span6">
 				<h3> <?php echo $row['name'] ?> </h3>
-				<!-- <small>Core i7, DDR4, 32GB, HDD, SSD</small> -->
 				<hr class="soft"/>
 				<div class="row">
 					<div class=span3>
@@ -56,27 +55,14 @@
 					
 				</div>
 				
-				<!-- <form class="form-horizontal qtyFrm">
-				  <div class="control-group">
-					<label class="control-label"><span> <?php echo "Rp. ".$row['price'] ?> </span></label>
-					<div class="controls">
-					<input type="number" class="span1" placeholder="Qty."/>
-					<a class="btn btn-large btn-primary pull-right" href="<?php echo base_url('index.php/Cart/Add/'.$row['product_id'])?>">Add to cart <i class=" icon-shopping-cart"></i></a>
-					  <button type="submit" class="btn btn-large btn-primary pull-right"> Add to cart <i class=" icon-shopping-cart"></i></button>
-					</div>
-				  </div>
-				</form> -->
-				
 				<hr class="soft clr"/>
 				<p>
-					<!-- Laptop gaming dengan layar 15.6" yang memiliki prosesor Core i7, penyimpanan memori yang cepat, memori pendukung DDR4-2400 terbaru yang akan membuat performa game lebih cepat -->
 					<?php
 						$desc = preg_replace('(\s-)', '<br>-',  $row['description']);
 						echo $desc;
 					?>
 				</p>
 		<?php } ?>
-				<!-- <a class="btn btn-small pull-right" href="#detail">More Details</a> -->
 				<br class="clr"/>
 			<hr class="soft"/>
 			</div>

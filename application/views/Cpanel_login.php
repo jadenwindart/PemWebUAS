@@ -19,7 +19,7 @@
                 <div class="modal-body">
                     <?php echo form_open('Cpanel/Login'); ?>
                     <div class="form-group">
-                        <label class="col-sm-2" for="Email">username:</label>
+                        <label class="col-sm-2" for="Email">Username</label>
                         <div class="col-sm-10">
                             <input class="form-control" type="text" name="username" placeholder="Username" required>
                         </div>

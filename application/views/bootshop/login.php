@@ -52,7 +52,7 @@
 						</div>
 						<div class="control-group">
 							<div class="controls">
-								<button type="submit" class="btn">Sign in</button> OR <a href="<?php echo base_url('index.php/Home/Register')?>" class="btn">Register Now!</a>
+								<button type="submit" class="btn">Sign in</button> OR <a href="<?php echo base_url('index.php/Register')?>" class="btn">Register Now!</a>
 							</div>
 						</div>
 						<?php echo form_close()?>

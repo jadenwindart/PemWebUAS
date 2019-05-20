@@ -39,9 +39,10 @@
             );
             $this->form_validation->set_rules('FirstName', 'First Name', 'required|alpha');
             $this->form_validation->set_rules('LastName', 'Last Name', 'required|alpha');
-            $this->form_validation->set_rules('password', 'Password', 'required');
+            $this->form_validation->set_rules('password', 'Password', 'required|min_length[8]');
             $this->form_validation->set_rules('retype_pass', 'Retype Password', 
                 array(
+                    'min_length[8]',
                     array(
                         'callback',
                         function($retype) {
@@ -64,9 +65,9 @@
             );
             $this->form_validation->set_rules('address', 'Address', 'required|alpha_numeric');
             $this->form_validation->set_rules('city', 'City', 'required|alpha');
-            $this->form_validation->set_rules('postcode', 'PostCode', 'required|numeric');
+            $this->form_validation->set_rules('postcode', 'PostCode', 'required|alpha_numeric');
             $this->form_validation->set_rules('country', 'Country', 'required|alpha');
-            $this->form_validation->set_rules('phone', 'Mobile Phone', 'required|numeric');
+            $this->form_validation->set_rules('phone', 'Mobile Phone', 'required|numeric|min_length[10]');
             $this->form_validation->set_error_delimiters('<p style="color:red;">','</p>');
             
             if($this->form_validation->run() == FALSE){
