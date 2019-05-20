@@ -39,7 +39,7 @@
                 'user_id' => $userid,
                 'status' => 0
             );
-            $this->db->insert('Cart',$dataCart);
+            $this->db->insert('cart',$dataCart);
             return TRUE;
         }
 
@@ -62,7 +62,7 @@
                             'user_id' => $this->ID,
                             'status' => 0
                         );
-                        $this->db->insert('Cart',$dataCart);
+                        $this->db->insert('cart',$dataCart);
                         $this->GetCart();
                     }
                     return TRUE;
@@ -87,7 +87,7 @@
             $this->db->where('status',0);
             $this->db->order_by('idCart','DESC');
             $this->db->limit(1);
-            $query = $this->db->get('Cart');
+            $query = $this->db->get('cart');
             $userData = $query->result_array();
             $this->cart = $userData[0]['idCart'];
             return $this->cart;
@@ -95,10 +95,10 @@
 
         public function GetOrder(){
             //$this->db->cache_on();
-            $this->db->join('Cart','Cart.idCart = orders.idCart');
+            $this->db->join('cart','cart.idCart = orders.idCart');
             $this->db->join('product','product.product_id = orders.product_id');
             $this->db->where('user_id',$this->ID);
-            $this->db->where('Cart.idCart',$this->cart);
+            $this->db->where('cart.idCart',$this->cart);
             $this->db->where('status',0);
             $query = $this->db->get('orders');
             $this->order = $query->result_array();
@@ -206,13 +206,13 @@
                 //$this->db->cache_off();
                 $this->db->where('idCart',$this->cart);
                 $this->db->set('status','status+1',false);
-                $this->db->update('Cart');
+                $this->db->update('cart');
                 $dataCart = array(
                     'user_id' => $this->ID,
                     'status' => 0
                 );
                 $this->db->trans_start();
-                $this->db->insert('Cart',$dataCart);
+                $this->db->insert('cart',$dataCart);
                 $this->db->trans_complete();
                 if($this->db->trans_status()=== FALSE){
                     $this->db->trans_rollback();
