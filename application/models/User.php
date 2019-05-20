@@ -47,24 +47,26 @@
             $this->db->where('username',$username);
             $query = $this->db->get('user');
             $userData = $query->result_array();
-            if(password_verify($password,$userData[0]['password'])){
-                $this->ID = $userData[0]['user_id'];
-                $this->FirstName = $userData[0]['first_name'];
-                $this->LastName = $userData[0]['last_name'];
-                $this->username = $userData[0]['username'];
-                $this->address = $userData[0]['address'];
-                $this->phone = $userData[0]['phone'];
-                $this->Balance = $userData[0]['Balance'];
-                $this->GetCart();
-                if($this->cart === NULL){
-                    $dataCart = array(
-                        'user_id' => $this->ID,
-                        'status' => 0
-                    );
-                    $this->db->insert('Cart',$dataCart);
+            if(!empty($userData)) {
+                if(password_verify($password,$userData[0]['password'])){
+                    $this->ID = $userData[0]['user_id'];
+                    $this->FirstName = $userData[0]['first_name'];
+                    $this->LastName = $userData[0]['last_name'];
+                    $this->username = $userData[0]['username'];
+                    $this->address = $userData[0]['address'];
+                    $this->phone = $userData[0]['phone'];
+                    $this->Balance = $userData[0]['Balance'];
                     $this->GetCart();
+                    if($this->cart === NULL){
+                        $dataCart = array(
+                            'user_id' => $this->ID,
+                            'status' => 0
+                        );
+                        $this->db->insert('Cart',$dataCart);
+                        $this->GetCart();
+                    }
+                    return TRUE;
                 }
-                return TRUE;
             }
             return FALSE;
         }
