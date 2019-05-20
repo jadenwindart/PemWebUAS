@@ -16,6 +16,7 @@
 
             $this->form_validation->set_rules('username', 'Username',
                 array(
+                    'alpha_numeric',
                     array(
                         'callback',
                         function($username) {
@@ -36,8 +37,8 @@
                     )
                 )
             );
-            $this->form_validation->set_rules('FirstName', 'First Name', 'required');
-            $this->form_validation->set_rules('LastName', 'Last Name', 'required');
+            $this->form_validation->set_rules('FirstName', 'First Name', 'required|alpha');
+            $this->form_validation->set_rules('LastName', 'Last Name', 'required|alpha');
             $this->form_validation->set_rules('password', 'Password', 'required');
             $this->form_validation->set_rules('retype_pass', 'Retype Password', 
                 array(
@@ -61,10 +62,10 @@
                     )
                 )
             );
-            $this->form_validation->set_rules('address', 'Address', 'required');
-            $this->form_validation->set_rules('city', 'City', 'required');
-            $this->form_validation->set_rules('postcode', 'PostCode', 'required');
-            $this->form_validation->set_rules('country', 'Country', 'required');
+            $this->form_validation->set_rules('address', 'Address', 'required|alpha_numeric');
+            $this->form_validation->set_rules('city', 'City', 'required|alpha');
+            $this->form_validation->set_rules('postcode', 'PostCode', 'required|numeric');
+            $this->form_validation->set_rules('country', 'Country', 'required|alpha');
             $this->form_validation->set_rules('phone', 'Mobile Phone', 'required|numeric');
             $this->form_validation->set_error_delimiters('<p style="color:red;">','</p>');
             
