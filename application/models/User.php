@@ -70,7 +70,7 @@
         }
 
         public function GetCart(){
-            if($this->cart == NULL || !isset($this->cart)){
+            $this->db->cache_on();
                 $this->db->select('idCart');
                 $this->db->where('user_id', $this->ID);
                 $this->db->where('status',0);
@@ -79,7 +79,6 @@
                 $query = $this->db->get('Cart');
                 $userData = $query->result_array();
                 $this->cart = $userData[0]['idCart'];
-            }
             return $this->cart;
         }
 
@@ -88,6 +87,7 @@
             $this->db->join('Cart','Cart.idCart = orders.idCart');
             $this->db->join('product','product.product_id = orders.product_id');
             $this->db->where('user_id',$this->ID);
+            $this->db->where('Cart.idCart',$this->cart);
             $this->db->where('status',0);
             $query = $this->db->get('orders');
             $this->order = $query->result_array();
@@ -95,7 +95,7 @@
         }
 
         public function CountOrder(){
-            if(!isset($this->order)) $this->GetOrder();
+            $this->GetOrder();
             return count($this->order);
         }
 
@@ -187,6 +187,7 @@
             $query = $this->db->get('user');
             $userData = $query->result_array();
             if(password_verify($password,$userData[0]['password'])){
+                $this->db->cache_off();
                 $this->db->where('idCart',$this->cart);
                 $this->db->set('status','status+1',false);
                 $this->db->update('Cart');
@@ -194,7 +195,15 @@
                     'user_id' => $this->ID,
                     'status' => 0
                 );
+                $this->db->trans_start();
                 $this->db->insert('Cart',$dataCart);
+                $this->db->trans_complete();
+                if($this->db->trans_status()=== FALSE){
+                    $this->db->trans_rollback();
+                    return FALSE;
+                }
+                $this->db->trans_commit();
+                $this->GetCart();
                 return TRUE;
             }
             return FALSE;

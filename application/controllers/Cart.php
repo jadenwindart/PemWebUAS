@@ -17,6 +17,7 @@
 
         public function Add($idProduct){
             $this->user->AddOrder($idProduct);
+            $this->session->set_userdata('user',$this->user->SerializeData());
             redirect('Home');
         }
 
@@ -44,7 +45,7 @@
                     'footer' => $this->load->view('bootshop/Template/footer',NULL,TRUE)
                 );
                 $this->load->view('bootshop/CheckOutSuccess',$data);
-                
+                $this->session->set_userdata('user',$this->user->SerializeData());
             }
             else redirect('Home/CheckOut');
         }
