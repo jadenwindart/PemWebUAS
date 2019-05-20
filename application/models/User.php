@@ -62,7 +62,7 @@
                         'status' => 0
                     );
                     $this->db->insert('Cart',$dataCart);
-                    $this->GetOrder();
+                    $this->GetCart();
                 }
                 return TRUE;
             }
