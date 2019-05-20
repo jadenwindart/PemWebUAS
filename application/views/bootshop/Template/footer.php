@@ -3,14 +3,13 @@
 		<div class="row">
 			<div class="span3">
 				<h5>ACCOUNT</h5>
-				<a href="login.html">YOUR ACCOUNT</a>
-				<a href="login.html">ORDER HISTORY</a>
+				<a href="<?php echo base_url('index.php/Home/Account')?>">YOUR ACCOUNT</a>
+				<a href="<?php echo base_url('index.php/Home/Cart')?>">ORDER</a>
 				</div>
 			<div class="span3">
 				<h5>INFORMATION</h5>
-				<a href="contact.html">CONTACT</a>  
-				<a href="register.html">REGISTRATION</a>
-				<a href="tac.html">TERMS AND CONDITIONS</a> 
+				<a href="<?php echo base_url('index.php/Home/Contact')?>">CONTACT</a>  
+				<a href="<?php echo base_url('index.php/Register')?>">REGISTRATION</a>
 				</div>
 			<div id="socialMedia" class="span3 pull-right">
 				<h5>SOCIAL MEDIA </h5>
